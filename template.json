@@ -1,0 +1,273 @@
+{
+  "Actor": {
+    "types": ["character","grunt"],
+    "templates": {
+      "base": {
+        "stats": {
+          "primary": {
+            "phy": {
+              "value": 0
+            },
+            "agl": {
+              "value": 0
+            },
+            "int": {
+              "value": 0
+            }
+          },
+          "secondary": {
+            "spd": {
+              "value": 0
+            },
+            "str": {
+              "value": 0
+            },
+            "prw": {
+              "value": 0
+            },
+            "poi": {
+              "value": 0
+            },
+            "arc": {
+              "value": 0
+            },
+            "per": {
+              "value": 0
+            }
+          }               
+        }
+      },
+      "character": {
+        "health": {
+          "column": {
+            "one": {
+              "value": 1,
+              "max": 1,
+              "min": 0
+            },
+            "two": {
+              "value": 1,
+              "max": 1,
+              "min": 0
+            },
+            "three": {
+              "value": 1,
+              "max": 1,
+              "min": 0
+            },
+            "four": {
+              "value": 1,
+              "max": 1,
+              "min": 0
+            },
+            "five": {
+              "value": 1,
+              "max": 1,
+              "min": 0
+            },
+            "six": {
+              "value": 1,
+              "max": 1,
+              "min": 0
+            }
+          }
+        },
+        "stats": {
+          "derived": {
+            "def": {
+              "value": 0
+            },
+            "arm": {
+              "value": 0
+            },
+            "init": {
+              "value": 0
+            },
+            "cmd": {
+              "value": 0
+            }
+          },
+          "modifiers": {
+            "def": {
+              "racial": {
+                "value": 0
+              },
+              "equipment": {
+                "value": 0
+              }
+            },
+            "arm": {
+              "shield": {
+                "value": 0
+              },
+              "armor": {
+                "value": 0
+              },
+              "other": {
+                "value": 0
+              }
+            },
+            "init": {
+              "equipment": {
+                "value": 0
+              },
+              "additional": {
+                "value": 0
+              }
+            },
+            "cmd": {
+              "skill": {
+                "value":0
+              },
+              "ability": {
+                "value": 0
+              }
+            }
+          } 
+        }
+      },
+      "grunt": {
+        "health": {
+          "value": 0
+        },
+        "stats": {
+          "def": {
+            "value": 0
+          },
+          "arm": {
+            "value": 0
+          },
+          "cmd": {
+            "value": 0
+          }
+        }
+      }
+    },
+    "character": {
+      "templates": ["base", "character"],
+      "biography": "",
+      "attributes": {
+        "exp": {
+          "value": 0
+        }
+      }
+    }
+  },
+  "Item": {
+    "types": ["item","ranged weapon","melee weapon","spell","ability","skill","career","archetype"],
+    "templates": {
+      "base": {
+        "name": "",
+        "description": ""
+      },
+      "ranged weapon": {
+        "rng": {
+          "value": 0,
+          "extreme": 0
+        },
+        "rat": {
+          "value": 0,
+          "modifier": 0
+        },
+        "pow": {
+          "value": 0
+        },
+        "ammo": {
+          "value": ""
+        }
+      },
+      "melee weapon": {
+        "rng": {
+          "value": 0
+        },
+        "mat": {
+          "value": 0,
+          "modifier": 0
+        },
+        "pow": {
+          "value": 0
+        },
+        "ps": {
+          "value": 0
+        }
+      },
+      "spell": {
+        "cost": {
+          "value": 0
+        },
+        "rng": {
+          "value": 0
+        },
+        "aoe": {
+          "value": ""
+        },
+        "pow": {
+          "value": 0
+        },
+        "up": {
+          "value": 0
+        },
+        "off": {
+          "value": 0
+        }
+      },
+      "ability": {
+        "prerequisites": ""
+      },
+      "skill": {
+        "parent": "",
+        "value": 0
+      },
+      "career": {
+        "prerequisites": [],
+        "startingAbil": [],
+        "startingSkill": [],
+        "startingAssets": [],
+        "startingConnection": [],
+        "abilities": [],
+        "skills": [],
+        "assets": [],
+        "connections": [],
+        "spells": []
+      },
+      "archetype": {
+        "benefits": []
+      }
+    },
+    "item": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0
+    },
+    "ranged weapon": {
+      "templates": ["base", "ranged weapon"],
+      "quantity": 1,
+      "weight": 0
+    },
+    "melee weapon": {
+      "templates": ["base", "melee weapon"],
+      "quantity": 1,
+      "weight": 0
+    },
+    "spell": {
+      "templates": ["base", "spell"],
+      "quantity": 1
+    },
+    "ability": {
+      "templates": ["base", "ability"],
+      "quantity": 1
+    },
+    "skill": {
+      "templates": ["base", "skill"],
+      "quantity": 1
+    },
+    "career": {
+      "templates": ["base", "career"],
+      "quantity": 1
+    },
+    "archetype": {
+      "templates": ["base", "archetype"],
+      "quantity": 1
+    }
+  }
+}

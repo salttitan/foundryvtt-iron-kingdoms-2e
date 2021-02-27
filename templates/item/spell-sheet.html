@@ -1,0 +1,64 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+            <table>
+                <tr>
+                    <th class="resource-label">
+                        COST
+                    </th>
+                    <th class="resource-label">
+                        RNG
+                    </th>
+                    <th class="resource-label">
+                        AOE
+                    </th>
+                    <th class="resource-label">
+                        POW
+                    </th>
+                    <th class="resource-label">
+                        UP
+                    </th>
+                    <th class="resource-label">
+                        OFF
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="data.cost.value" value="{{data.cost.value}}" data-type="Number"/>
+                    </td>
+                    <td>
+                        <input type="text" name="data.rng.value" value="{{data.rng.value}}" data-type="Number"/>
+                    </td>
+                    <td>
+                        <input type="text" name="data.aoe.value" value="{{data.aoe.value}}" data-type="Text"/>
+                    </td>
+                    <td>
+                        <input type="text" name="data.pow.value" value="{{data.pow.value}}" data-type="Number"/>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="data.up.value" value="{{data.up.value}}" {{checked data.up.value}}/>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="data.off.value" value="{{data.off.value}}" {{checked data.off.value}}/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="attributes">Description</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable placeholder="Description"}}
+        </div>
+    </section>
+</form>
