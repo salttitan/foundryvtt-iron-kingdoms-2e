@@ -39,6 +39,7 @@
       },
       "character": {
         "health": {
+          "grid": [],
           "column": {
             "one": {
               "value": 1,
@@ -154,7 +155,7 @@
     }
   },
   "Item": {
-    "types": ["item","ranged weapon","melee weapon","spell","ability","skill","career","archetype"],
+    "types": ["item","ranged weapon","melee weapon","spell","ability","skill","career","archetype", "grid"],
     "templates": {
       "base": {
         "name": "",
@@ -232,6 +233,10 @@
       },
       "archetype": {
         "benefits": []
+      },
+      "grid": {
+        "name": "",
+        "boxes": []
       }
     },
     "item": {
@@ -267,6 +272,10 @@
     },
     "archetype": {
       "templates": ["base", "archetype"],
+      "quantity": 1
+    },
+    "grid": {
+      "templates": ["grid"],
       "quantity": 1
     }
   }

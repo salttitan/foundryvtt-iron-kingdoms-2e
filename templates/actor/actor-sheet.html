@@ -1,14 +1,17 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
 
     {{!-- Sheet Header --}}
-    <header class="sheet-header">
+    <header class="sheet-header flexrow">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-        <div class="header-fields">
+        <div class="header-fields flexrow">
             <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number
             from 1 to 12 and will create that number of columns.  --}}
-          <div class="resources grid grid-4col">
+          <aside class="health flexcol">
+            {{{healthGrid data.health}}}
+          </aside>
+          <ul class="resources flexrow">
               <div class="ability flexrow flex-group-center">
                 <label for="data.stats.derived.def.value" class="resource-label">DEF</label>
                 <span class="ability-mod">{{numberFormat data.stats.derived.def.value decimals=0 sign=true}}</span>
@@ -25,17 +28,8 @@
                 <label for="data.stats.derived.cmd.value" class="resource-label">CMD</label>
                 <span class="ability-mod">{{numberFormat data.stats.derived.cmd.value decimals=0 sign=true}}</span>
               </div>
-          </div>
-          <div class="resources grid grid-7col">
-            <div class="resource flex-group-center">
-              <label for="data.health.column.one.value" class="resource-label">One</label>
-              <div class="resource-content flexrow flex-center flex-between">
-                <input type="text" name="data.health.column.one.value" value="{{data.health.column.one.value}}" data-dtype="Number"/>
-                <span>/</span>
-                <span class="ability-mod">{{data.health.column.one.max}}</span>
-              </div>
-            </div>
-          </div>
+            </ul>
+          
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
@@ -50,10 +44,16 @@
         <a class="item" data-tab="items">Items</a>
         <a class="item" data-tab="weapons">Weapons</a>
         <a class="item" data-tab="spells">Spells</a>
+        <a class="item" data-tab="health">Health</a>
     </nav>
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
+
+        {{!-- Health Tab --}}
+        <div class="tab health" data-group="primary" data-tab="health">
+          {{{healthGrid data.health}}}
+        </div>
 
         {{!-- Biography Tab --}}
         <div class="tab biography" data-group="primary" data-tab="description">

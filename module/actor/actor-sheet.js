@@ -10,7 +10,7 @@ export class ikrpgActorSheet extends ActorSheet {
       classes: ["ikrpg2e", "sheet", "actor"],
       template: "systems/ikrpg2e/templates/actor/actor-sheet.html",
       width: 600,
-      height: 600,
+      height: 650,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" }]
     });
   }
@@ -25,40 +25,60 @@ export class ikrpgActorSheet extends ActorSheet {
       attr.isCheckbox = attr.dtype === "Boolean";
     }
 
-    // Prepare items
+    // Prepare items and grid
     if (this.actor.data.type == 'character') {
       this._prepareCharacterItems(data);
-      // this._prepareCharacterHealth(data);
+      this._prepareCharacterHealth(data);
     }
 
     return data;
   }
 
-  // _prepareCharacterHealth(sheetData) {
-  //   const actorData = sheetData.actor;
-  //   const health = actorData.data.health;
+  _prepareCharacterHealth(sheetData) {
+    const actorData = sheetData.actor;
+    const health = actorData.data.health;
     
-  //   // Start the health grid div
-  //   let str = "<div style='border: 1px solid rgba(0,0,0,.125); border-radius: .25rem; font-size: 10px; width: 200px;'>"
-  //   + "<div style='background-color: #fefefe; border-bottom: 1px solid rgba(0,0,0,.125); margin-bottom: 0; padding: 3px; padding-left: 5px;'>Damage Track</div>";
+    // Start the health grid div
+    let str = "<div style='border: 1px solid rgba(0,0,0,.125); border-radius: .25rem; font-size: 10px; width: 200px;'>"
+    + "<div style='background-color: #fefefe; border-bottom: 1px solid rgba(0,0,0,.125); margin-bottom: 0; padding: 3px; padding-left: 5px;'>Damage Track</div>";
 
-  //   // Add the content div
-  //   str += "<div style='padding: 3px;'>";
+    // Add the content div
+    str += "<div style='padding: 3px;'>";
+    str += "<table style ='width:100%; font-size: 8px; padding: 1px;'>"
+    // Pass through once for each of the first ten boxes
+    let max_value = 0;
+    for (var i = -1; i < 6; i++){
+      if (health.grid[i] > max_value) { max_value = health.grid[i]; }
+    }
 
-  //   // Pass through once for each of the first ten boxes
-  //   let max_value = 0;
-  //   for (var i = 1; i < 7; i++){
-  //     if (health.column.i.value[i] > max_value) { max_value = health.column.i.value[i]; }
-  //   }
+    for (var i = max_value; i > 0; i--) {
 
-  //   for (var i = max_value; i >0; i --) {
-  //     str+= "<tr>"
-  //     //if any row has this many boxes, add it
-  //     for (var j = 1; j < 7; j++) {
-  //       if (health.column)
-  //     }
-  //   }
-  // }
+      str+= "<tr>"
+      //if any row has this many boxes, add it
+      for (var j = 0; j < 6; j++) {
+
+        if (health.grid[j] >= i) {
+          let dmg_row = health.grid[j] - i +1;
+          let box_str = "<td class='damage_box' style='text-align: center; border:1px solid rgba(0,0,0,0.125); width: 16px; height: 16px;'><input type='radio'>";
+          
+          str += box_str;
+
+          str += "</td>";
+        } else {
+          str += "<td class='damage_box' style='text-align: center; border:0px solid rgba(0,0,0,0.125); width: 16px; height: 16px;'></td>";
+        }
+      }
+      str += "</tr>";
+    }
+    str += "</table>";
+    str += "</div>";
+    str +="</div>";
+
+    actorData.str = str;
+    
+    
+  }
+
 
   _prepareCharacterItems(sheetData){
     const actorData = sheetData.actor;
