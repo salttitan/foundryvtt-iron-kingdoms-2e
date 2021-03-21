@@ -36,8 +36,8 @@
 }
 
 .grid-6col {
-  grid-column: span 5 / span 5;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-column: span 6 / span 6;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .grid-7col {
@@ -121,8 +121,8 @@
 
 .ikrpg2e .sheet-header {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 210px;
-  flex: 0 0 210px;
+  -ms-flex: 0 0 175px;
+  flex: 0 0 175px;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -261,3 +261,62 @@
   flex: 0 0 86px;
   text-align: right;
 }
+
+* .health {
+  width: 50%;
+  /* display: flex; */
+  /* Hide the browser's default checkbox */
+  /* flex-wrap: wrap; */
+}
+/* 
+* .health label {
+  height: 15px;
+  width: 15px;
+  background-color: #DAA520;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+
+* .health label[for$="-0"] {
+  margin-right: 0px;
+}
+
+* .health label:hover {
+  filter: brightness(0.8); 
+  opacity: 0.9;
+} */
+/* * .health input {
+  display: none;
+} */
+/* * .health input:checked ~ label {
+  background-color: #EEEFFF;
+}
+
+* .health input:checked + label {
+  background-color: #DAA520;
+}
+
+* .health input ~ label {
+  margin-right: 3px;
+  margin-bottom: 3px;
+  transition: filter 0.2s;
+  cursor: pointer;
+}
+
+* .health input ~ label {
+  margin-right: 3px;
+  margin-bottom: 3px;
+  transition: filter 0.2s;
+  cursor: pointer;
+}
+
+* .health input ~ label[for$="0"] {
+  border-width: 2px;
+}
+
+* .health input ~ label:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
+} */

@@ -1,34 +1,64 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
 
     {{!-- Sheet Header --}}
-    <header class="sheet-header flexrow">
+    <header class="sheet-header">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-        <div class="header-fields flexrow">
+        <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number
             from 1 to 12 and will create that number of columns.  --}}
-          <aside class="health flexcol">
-            {{{healthGrid data.health}}}
-          </aside>
-          <ul class="resources flexrow">
-              <div class="ability flexrow flex-group-center">
-                <label for="data.stats.derived.def.value" class="resource-label">DEF</label>
-                <span class="ability-mod">{{numberFormat data.stats.derived.def.value decimals=0 sign=true}}</span>
+            <div class="grid grid-4col">
+                <div class="ability flexrow flex-group-center">
+                  <label for="data.stats.derived.def.value" class="resource-label">DEF</label>
+                  <span class="ability-mod">{{numberFormat data.stats.derived.def.value decimals=0 sign=true}}</span>
+                </div>
+                <div class="ability flexrow flex-group-center">
+                  <label for="data.stats.derived.arm.value" class="resource-label">ARM</label>
+                  <span class="ability-mod">{{numberFormat data.stats.derived.arm.value decimals=0 sign=true}}</span>
+                </div>
+                <div class="ability flexrow flex-group-center">
+                  <label for="data.stats.derived.init.value" class="resource-label">INIT</label>
+                  <span class="ability-mod">{{numberFormat data.stats.derived.init.value decimals=0 sign=true}}</span>
+                </div>
+                <div class="ability flexrow flex-group-center">
+                  <label for="data.stats.derived.cmd.value" class="resource-label">CMD</label>
+                  <span class="ability-mod">{{numberFormat data.stats.derived.cmd.value decimals=0 sign=true}}</span>
+                </div>              
+            </div>
+            <h3>Health</h3>
+            <div class="grid grid-7col">
+              <div class="ability flexcol flex-group-center">
+                <label for="data.health.column.one" class="resource-label">1</label>
+                <input type="number" name="data.health.column.one.value" value="{{data.health.column.one.value}}" data-dtype="Number"/> {{data.health.column.one.max}}
+              </div>
+              <div class="ability flexcol flex-group-center">
+                <label for="data.health.column.two" class="resource-label">2</label>
+                <input type="number" name="data.health.column.two.value" value="{{data.health.column.two.value}}" data-dtype="Number"/> {{data.health.column.two.max}}
+              </div>
+              <div class="ability flexcol flex-group-center">
+                <label for="data.health.column.three" class="resource-label">3</label>
+                <input type="number" name="data.health.column.three.value" value="{{data.health.column.three.value}}" data-dtype="Number"/> {{data.health.column.three.max}}
+              </div>
+              <div class="ability flexcol flex-group-center">
+                <label for="data.health.column.four" class="resource-label">4</label>
+                <input type="number" name="data.health.column.four.value" value="{{data.health.column.four.value}}" data-dtype="Number"/> {{data.health.column.four.max}}
+              </div>
+              <div class="ability flexcol flex-group-center">
+                <label for="data.health.column.five" class="resource-label">5</label>
+                <input type="number" name="data.health.column.five.value" value="{{data.health.column.five.value}}" data-dtype="Number"/> {{data.health.column.five.max}}
+              </div>
+              <div class="ability flexcol flex-group-center">
+                <label for="data.health.column.six" class="resource-label">6</label>
+                <input type="number" name="data.health.column.six.value" value="{{data.health.column.six.value}}" data-dtype="Number"/> {{data.health.column.six.max}}
               </div>
               <div class="ability flexrow flex-group-center">
-                <label for="data.stats.derived.arm.value" class="resource-label">ARM</label>
-                <span class="ability-mod">{{numberFormat data.stats.derived.arm.value decimals=0 sign=true}}</span>
+                <label for="data.health.bonus" class="resource-label">Armor</label>
+                <input type="number" name="data.health.bonus.value" value="{{data.health.bonus.value}}" data-dtype="Number"/>
+                <span>/</span>
+                <input type="number" name="data.health.bonus.max" value="{{data.health.bonus.max}}" data-dtype="Number"/>
               </div>
-              <div class="ability flexrow flex-group-center">
-                <label for="data.stats.derived.init.value" class="resource-label">INIT</label>
-                <span class="ability-mod">{{numberFormat data.stats.derived.init.value decimals=0 sign=true}}</span>
-              </div>
-              <div class="ability flexrow flex-group-center">
-                <label for="data.stats.derived.cmd.value" class="resource-label">CMD</label>
-                <span class="ability-mod">{{numberFormat data.stats.derived.cmd.value decimals=0 sign=true}}</span>
-              </div>
-            </ul>
+            </div>
           
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -39,24 +69,56 @@
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="stats">Stats</a>
         <a class="item" data-tab="description">Description</a>
-        <a class="item" data-tab="items">Items</a>
-        <a class="item" data-tab="weapons">Weapons</a>
+        <a class="item" data-tab="skills">Skills/Abilities</a>
+        <a class="item" data-tab="stats">Stats</a>
+        <a class="item" data-tab="weapons">Combat</a>
         <a class="item" data-tab="spells">Spells</a>
-        <a class="item" data-tab="health">Health</a>
+        <a class="item" data-tab="items">Items</a>
     </nav>
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
-        {{!-- Health Tab --}}
-        <div class="tab health" data-group="primary" data-tab="health">
-          {{{healthGrid data.health}}}
-        </div>
-
         {{!-- Biography Tab --}}
         <div class="tab biography" data-group="primary" data-tab="description">
+          <ol class="items-list">
+            <li class="item flexrow item-header">
+              <div class="item-image"></div>
+              <div class="item-name">Race</div>
+            </li>
+            {{#each actor.races as |race id|}}
+            <li class="item flexrow" data-item-id="{{race._id}}">
+                <div class="item-image"><img src="{{race.img}}" title="{{race.name}}" width="24" height="24"/></div>
+                <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{race.name}}</a></h4>
+            </li>
+            {{/each}}
+          </ol>
+          <ol class="items-list">
+            <li class="item flexrow item-header">
+              <div class="item-image"></div>
+              <div class="item-name">Archetype</div>
+            </li>
+            {{#each actor.archetypes as |archetype id|}}
+            <li class="item flexrow" data-item-id="{{archetype._id}}">
+                <div class="item-image"><img src="{{archetype.img}}" title="{{archetype.name}}" width="24" height="24"/></div>
+                <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{archetype.name}}</a></h4>
+            </li>
+            {{/each}}
+          </ol>
+          <ol class="items-list">
+            <li class="item flexrow item-header">
+              <div class="item-image"></div>
+              <div class="item-name">Careers</div>
+            </li>
+            {{#each actor.careers as |career id|}}
+            <li class="item flexrow" data-item-id="{{career._id}}">
+                <div class="item-image"><img src="{{career.img}}" title="{{career.name}}" width="24" height="24"/></div>
+                <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{career.name}}</a></h4>
+            </li>
+            {{/each}}
+          </ol>
+            <h3>Biography & Notes</h3>
             {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
 
@@ -73,14 +135,53 @@
             {{#each actor.gear as |item id|}}
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                    <h4 class="item-name">{{item.name}}</h4>
+                    <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{item.name}}</a></h4>
                     <div class="item-controls">
-                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
                         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                     </div>
                 </li>
             {{/each}}
             </ol>
+        </div>
+
+        {{!-- Skills and Abilities Tab --}}
+        <div class="tab items" data-group="primary" data-tab="skills">
+            <ol class="items-list">
+                <li class="item flexrow item-header">
+                  <div class="item-image"></div>
+                  <div class="item-name">Skills</div>
+                  <div class="item-controls">
+                    <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
+                  </div>
+                </li>
+            {{#each actor.skills as |skill id|}}
+                <li class="item flexrow" data-item-id="{{skill._id}}">
+                    <div class="item-image"><img src="{{skill.img}}" title="{{skill.name}}" width="24" height="24"/></div>
+                    <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{skill.name}}</a></h4>
+                    <div class="item-controls">
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            {{/each}}
+            </ol>
+            <ol class="items-list">
+              <li class="item flexrow item-header">
+                <div class="item-image"></div>
+                <div class="item-name">Abilities</div>
+                <div class="item-controls">
+                  <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
+                </div>
+              </li>
+          {{#each actor.abilities as |ability id|}}
+              <li class="item flexrow" data-item-id="{{ability._id}}">
+                  <div class="item-image"><img src="{{ability.img}}" title="{{ability.name}}" width="24" height="24"/></div>
+                  <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{ability.name}}</a></h4>
+                  <div class="item-controls">
+                      <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                  </div>
+              </li>
+          {{/each}}
+          </ol>
         </div>
 
         {{!-- Spells Tab --}}
@@ -118,11 +219,9 @@
             {{#each actor.spells as |spell id|}}
                 <li class="item flexrow" data-item-id="{{spell._id}}" style="height: 40px">
                     <div class="item-image"><img src="{{spell.img}}" title="{{spell.name}}" width="40" height="40"/></div>
-                    <h4 class="item-name">{{spell.name}}</h4>
+                    <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{spell.name}}</a></h4>
                     <div>
-            
                       <table class="spell-table" style="height:max-content; margin:0">
-                        
                         <tr>
                             <td>
                               {{data.cost.value}}
@@ -184,7 +283,7 @@
             {{#each actor.rangedWeapons as |gun id|}}
                 <li class="item flexrow" data-item-id="{{gun._id}}" style="height: 40px;">
                     <div class="item-image"><img src="{{gun.img}}" title="{{gun.name}}" width="24" height="24"/></div>
-                    <h4 class="item-name">{{gun.name}}</h4>
+                    <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{gun.name}}</a></h4>
                     <div>
                       <table class="spell-table" style="height:max-content; margin:0">
                         <tr>
@@ -237,7 +336,7 @@
               {{#each actor.meleeWeapons as |sword id|}}
               <li class="item flexrow" data-item-id="{{sword._id}}" style="height: 40px;">
                   <div class="item-image"><img src="{{sword.img}}" title="{{sword.name}}" width="24" height="24"/></div>
-                  <h4 class="item-name">{{sword.name}}</h4>
+                  <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{sword.name}}</a></h4>
                   <div>
                     <table class="spell-table" style="height:max-content; margin:0">
                       <tr>
@@ -263,6 +362,65 @@
               </li>
               {{/each}}
             </ol>
+            <ol class="items-list">
+              <li class="item flexrow item-header" style="height: 40px;">
+                <div class="item-image"></div>
+                <div class="item-name">Armor</div>
+                <table class="item-table" style="width: max-content;">
+                  <tr>
+                    <th class="resource-label">
+                      SPD
+                    </th>
+                    <th class="resource-label">
+                      DEF
+                    </th>
+                    <th class="resource-label">
+                      ARM
+                    </th>
+                    <th class="resource-label">
+                      Boxes
+                    </th>
+                    <th class="resource-label">
+                      Equip
+                    </th>
+                </tr>
+                </table>
+                <div class="item-controls">
+                  <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
+                </div>
+              </li>
+          {{#each actor.armors as |armor id|}}
+              <li class="item flexrow" data-item-id="{{armor._id}}" style="height: 40px;">
+                  <div class="item-image"><img src="{{armor.img}}" title="{{armor.name}}" width="24" height="24"/></div>
+                  <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{armor.name}}</a></h4>
+                  <div>
+                    <table class="spell-table" style="height:max-content; margin:0">
+                      <tr>
+                          <td>
+                            {{data.spd.value}}
+                          </td>
+                          <td>
+                            {{data.def.value}}
+                          </td>
+                          <td>
+                            {{data.arm.value}}
+                          </td>
+                          <td>
+                            {{data.boxes.max}}
+                          </td>
+                          <td>
+                            {{data.equipped.value}}
+                          </td>
+                      </tr>
+                  </table>
+                  </div>
+                  <div class="item-controls">
+                      <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                      <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                  </div>
+              </li>
+          {{/each}}
+          </ol>
         </div>
 
         {{!-- Stats Tab --}}

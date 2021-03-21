@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character","grunt"],
+    "types": ["character","grunt", "steamjack"],
     "templates": {
       "base": {
         "stats": {
@@ -40,34 +40,38 @@
       "character": {
         "health": {
           "grid": [],
+          "bonus": {
+            "value": 0,
+            "max": 0
+          },
           "column": {
             "one": {
-              "value": 1,
+              "value": [1],
               "max": 1,
               "min": 0
             },
             "two": {
-              "value": 1,
+              "value": [1],
               "max": 1,
               "min": 0
             },
             "three": {
-              "value": 1,
+              "value": [1],
               "max": 1,
               "min": 0
             },
             "four": {
-              "value": 1,
+              "value": [1],
               "max": 1,
               "min": 0
             },
             "five": {
-              "value": 1,
+              "value": [1],
               "max": 1,
               "min": 0
             },
             "six": {
-              "value": 1,
+              "value": [1],
               "max": 1,
               "min": 0
             }
@@ -129,7 +133,8 @@
       },
       "grunt": {
         "health": {
-          "value": 0
+          "value": 0,
+          "max": 0
         },
         "stats": {
           "def": {
@@ -142,6 +147,37 @@
             "value": 0
           }
         }
+      },
+      "steamjack": {
+        "chassis": "",
+        "grid": [],
+        "controller": "",
+        "fuel": {
+          "value": 0,
+          "max": 0,
+          "consumption": ""
+        },
+        "imprints": "",
+        "bonus": "",
+        "language": "",
+        "catDamage": "",
+        "systems": {
+          "cortex": {
+            "crippled": false
+          },
+          "left_arm": {
+            "crippled": false
+          },
+          "right_arm": {
+            "crippled": false
+          },
+          "movement": {
+            "crippled": false
+          },
+          "arc_node": {
+            "crippled": false
+          }
+        }   
       }
     },
     "character": {
@@ -152,14 +188,20 @@
           "value": 0
         }
       }
+    },
+    "steamjack": {
+      "templates": ["base", "steamjack", "character"],
+      "biography": "",
+      "attributes": {}
     }
   },
   "Item": {
-    "types": ["item","ranged weapon","melee weapon","spell","ability","skill","career","archetype", "grid"],
+    "types": ["ability","archetype","armor","benefit","career","cortex","item","melee weapon","race","ranged weapon","skill","spell","steamjack gear"],
     "templates": {
       "base": {
         "name": "",
-        "description": ""
+        "description": "",
+        "special": ""
       },
       "ranged weapon": {
         "rng": {
@@ -175,6 +217,20 @@
         },
         "ammo": {
           "value": ""
+        },
+        "aoe": {
+          "value": ""
+        },
+        "mechanika": false,
+        "equipped": false,
+        "steamjack": {
+          "value": false,
+          "type": "",
+          "types": {
+            "light": "Light Only",
+            "heavy": "Heavy Only",
+            "both": "Any"
+          }
         }
       },
       "melee weapon": {
@@ -190,6 +246,12 @@
         },
         "ps": {
           "value": 0
+        },
+        "mechanika": false,
+        "equipped": false,
+        "steamjack": {
+          "value": false,
+          "type": ""
         }
       },
       "spell": {
@@ -210,6 +272,9 @@
         },
         "off": {
           "value": 0
+        },
+        "arc": {
+          "value": 0
         }
       },
       "ability": {
@@ -225,6 +290,7 @@
         "startingSkill": [],
         "startingAssets": [],
         "startingConnection": [],
+        "startingSpells": [],
         "abilities": [],
         "skills": [],
         "assets": [],
@@ -234,9 +300,245 @@
       "archetype": {
         "benefits": []
       },
-      "grid": {
-        "name": "",
-        "boxes": []
+      "race": {
+        "benefits": []
+      },
+      "armor": {
+        "spd": 0,
+        "def": 0,
+        "arm": 0,
+        "boxes": {
+          "value": 0,
+          "max": 0
+        },
+        "equipped": false
+      },
+      "benefit": {
+        "parent_arch": ""
+      },
+      "mechanika": {
+        "powerSource": {
+          "value": "",
+          "label": "Power Source",
+          "cost": 0,
+          "powerOutput": 0,
+          "lifespan": "",
+          "description": [],
+          "special": "",
+          "requirements": "",
+          "materialCost": 0,
+          "fabrication": ""
+        },
+        "powerSources": {
+          "empty": {
+            "label": "empty",
+            "cost": 0,
+            "powerOutput": 0,
+            "lifespan": "",
+            "description": [],
+            "special": "",
+            "requirements": "",
+            "materialCost": 0,
+            "fabrication": ""
+          },
+          "alchemical capacitor": {
+            "label": "Alchemical Capacitor",
+            "cost": 10,
+            "powerOutput": 3,
+            "lifespan": "1 week",
+            "description": ["This is a small alchemical battery that can be used to power most handheld devices. The capacitor functions by creating an alchemical reaction that generates power."],
+            "special": "Though alchemical capacitors are the least expensive mechanikal power sources available, they lose efficacy rapidly over time whether used or not.",
+            "requirements": "Alchemy and Mechanikal Engineering",
+            "materialCost": 3,
+            "fabrication": "Construction requires both an alchemist’s lab and a mechanik’s workshop. Once a character has the raw materials to construct the alchemical capacitor, he must spend four hours preparing and assembling the components. At the end of this time, his player makes an INT + Alchemy or Mechanikal Engineering roll, whichever is lower, against a target number of 13. If the roll succeeds, the character creates a functional capacitor. If the roll fails, the character can make another attempt once he has spent an additional hour reworking the capacitor."
+          },
+          "arcane turbine": {
+            "label": "Arcane Turbine",
+            "cost": 500,
+            "powerOutput": 8,
+            "lifespan": "6 hours at a time, with a steady supply of coal and water",
+            "description": ["The arcane turbine is a highly efficient and advanced generator that transforms energy from a steam engine into arcane energy. The heart of the turbine is a complex series of wire-coiled wheels spinning inside a thinly layered metal lattice of arcane-sensitive alloys. This creates energy that is carried through arcane conduits to power various mechanikal functions, most notably the power field of warcaster armor and peripheral steamjack systems such as sensory equipment and reflex triggers."," While there is variance in arcane turbines used for warcaster armor, most include a highly efficient integrated steam engine that provides a steady charge for up to twelve hours of operation on a full load of coal and water. These turbines can be set to minimal power, deactivating the power field but maintaining range of movement, to double the operation time and reduce smoke output. Warcaster arcane turbines integrate cooling systems to protect the wearer from the steam engine’s heat. The arcane turbines on a steamjack are powered by steam vents from its main steam engine and do not require separate coal or water."],
+            "special": "An arcane turbine is typically housed in a suit of mechanikal armor, but it is not limited to powering that suit of armor. Weapons and shields can be connected to the turbine using arcane conduits at a cost of 10 gc per item. Changing out an attached weapon requires ten minutes of labor and a successful INT + Mechanikal Engineering roll against a target number of 11. An arcane turbine requires 1 gc of coal per day for twelve hours of continuous operation.",
+            "requirements": "Mechanikal Engineering, Inscribe Formulae",
+            "materialCost": 160,
+            "fabrication": "Construction requires a mechanik’s workshop. Once a character has the raw materials to construct the arcane turbine, he must spend a week crafting and assembling the components. At the end of this time, his player makes an INT + Mechanikal Engineering roll against a target number of 17. If the roll succeeds, the character creates a functional arcane turbine. If the roll fails, the character can make another attempt once he has spent an additional day reworking the turbine."
+          },
+          "arcanodynamic accumulator": {
+            "label": "Arcanodynamic Accumulator",
+            "cost": 50,
+            "powerOutput": 4,
+            "lifespan": "1 month",
+            "description": ["Arcanodynamic accumulators are capacitors constructed with glass cylinders or spheres that contain steel and gold scrolls etched with complex runes to generate an arcane charge. They are very slow to produce but pack a great deal of energy into a single capacitor. Accumulators can be used to power most handheld devices. The capacitor functions by creating an alchemical reaction that generates power."],
+            "special": "The complex mechanika of an arcanodynamic accumulator allows it to keep its charge much longer than the alchemical capacitor. Arcanodynamic accumulators cannot be recharged.",
+            "requirements": "Craft (glasswork), Mechanikal Engineering, Inscribe Formulae",
+            "materialCost": 15,
+            "fabrication": "Construction requires both a mechanik’s workshop and a glassworker’s workshop. Once a character has the raw materials to construct the accumulator, he must spend one day preparing and assembling the components. At the end of this time, his player makes an INT + Craft (glasswork) or Mechanikal Engineering roll, whichever is lower, against a target number of 13. If the roll succeeds, the character creates a functional capacitor. If the roll fails, the character can make another attempt once he has spent an additional hour reworking the capacitor."
+          },
+          "clockwork capacitor": {
+            "label": "Clockwork Capacitor",
+            "cost": 80,
+            "powerOutput": 3,
+            "lifespan": "1 day, with the ability to be recharged as described below",
+            "description": ["The clockwork capacitor is an ingenious mechanikal device that can be recharged through winding. The Cult of Cyriss produces a vast array of these devices that can be much more sophisticated than those commonly available throughout the markets of the Iron Kingdoms. A clockwork capacitor can be built in any size but has the same general attributes regardless of size."],
+            "special": "Completely recharging this capacitor requires fifteen minutes of winding.",
+            "requirements": "Mechanikal Engineering, Inscribe Formulae",
+            "materialCost": 20,
+            "fabrication": "Construction requires a mechanik’s workshop. Once a character has the raw materials to construct the arcane turbine, he must spend three days crafting and assembling the components. At the end of this time, his player makes an INT + Mechanikal Engineering roll against a target number of 15. If the roll succeeds, the character creates a functional clockwork capacitor. If the roll fails, the character can make another attempt once he has spent an additional four hours reworking the capacitor."
+          },
+          "storm chamber": {
+            "label": "Storm Chamber",
+            "cost": 250,
+            "powerOutput": 5,
+            "lifespan": "1 year",
+            "description": ["The storm chamber is a revolutionary accumulator developed and used widely by the Cygnaran military. The accumulator is powered by lightning generated and harnessed within the chamber itself."],
+            "special": "Any character handling an activated storm chamber suffers a POW 12 electrical damage roll. Such power sources are either designed to be used by individuals with galvanic shields or integrated into the housing of mechanika where no one can contact the accumulator. Storm chambers cannot be recharged.",
+            "requirements": "Mechanikal Engineering, Inscribe Formulae",
+            "materialCost": 80,
+            "fabrication": "Construction requires a mechanik’s workshop. Once a character has the raw materials to construct the storm chamber, he must spend a week crafting and assembling the components. At the end of this time, his player makes an INT + Mechanikal Engineering roll against a target number of 16. If the roll succeeds, the character creates a functional storm chamber. If the roll fails, the character can make another attempt once he has spent an additional day reworking the generator."
+          }
+        },
+        "equippedRunes": {
+          "rune0": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune1": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune2": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune3": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune4": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune5": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune6": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune7": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune8": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "rune9": {
+            "value": "",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          }
+        },
+        "runes": {
+          "empty": {
+            "label": "Empty",
+            "type": "",
+            "cost": 0,
+            "points": 0,
+            "effect": ""
+          },
+          "accuracy": {
+            "label": "Accuracy",
+            "type": "Melee or Ranged Weapon",
+            "cost": 150,
+            "points": 1,
+            "effect": "While the weapon has power, the character wielding it gains +1 on his attack rolls with it."
+          },
+          "aegis": {
+            "label": "Aegis",
+            "type": "Armor",
+            "cost": 150,
+            "points": 1,
+            "effect": "While the armor has power, the character wearing it is immune to continuous effects."
+          },
+          "arcane_force": {
+            "label": "Arcane Force",
+            "type": "Melee Weapon",
+            "cost": 450,
+            "points": 3,
+            "effect": "While the weapon has power, it gains +2 POW. On a critical hit, the attacking character can slam the character hit instead of rolling damage normally. The character hit is slammed d6˝ directly away from the attacker and suffers a damage roll with POW equal to the attacker’s STR plus the POW of this weapon. The POW of collateral damage is equal to the attacker’s STR."
+          },
+          "balefire": {
+            "label": "Balefire",
+            "type": "Melee Weapon",
+            "cost": 150,
+            "points": 1,
+            "effect": "While the weapon has power, it gains boosted damage against undead characters."
+          },
+          "blast": {
+            "label": "Blast",
+            "type": "Ranged Weapon (firearm)",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the weapon has power, the character wielding it can attack with the weapon normally or can give the weapon AOE 3."
+          },
+          "blessed": {
+            "label": "Blessed",
+            "type": "Melee or Ranged Weapon",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the weapon has power, attacks with it ignore spell effects that add to the target’s DEF and ARM."
+          },
+          "bond plate": {
+            "label": "Bond Plate",
+            "type": "Melee or Ranged Weapon",
+            "cost": 300,
+            "points": 2,
+            "effect": "This is a runeplate specially designed to enable a warcaster to bond with a mechanikal weapon. While a weapon the warcaster is bonded to has power, the warcaster can boost attack and damage rolls with the weapon."
+          }
+        }
+      },
+      "cortex": {
+        "grade": "",
+        "int": 0,
+        "per": 0,
+        "cost": 0
+      },
+      "steamjack gear": {
+        "cost": {
+          "light": 0,
+          "heavy": 0
+        }
       }
     },
     "item": {
@@ -245,12 +547,12 @@
       "weight": 0
     },
     "ranged weapon": {
-      "templates": ["base", "ranged weapon"],
+      "templates": ["base", "ranged weapon", "mechanika"],
       "quantity": 1,
       "weight": 0
     },
     "melee weapon": {
-      "templates": ["base", "melee weapon"],
+      "templates": ["base", "melee weapon", "mechanika"],
       "quantity": 1,
       "weight": 0
     },
@@ -276,6 +578,22 @@
     },
     "grid": {
       "templates": ["grid"],
+      "quantity": 1
+    },
+    "race": {
+      "templates": ["base","race"],
+      "quantity": 1
+    },
+    "armor": {
+      "templates": ["base","armor", "mechanika"],
+      "quantity": 1
+    },
+    "steamjack gear": {
+      "templates": ["base", "steamjack gear"],
+      "quantity": 1
+    },
+    "cortex": {
+      "templates": ["base","cortex"],
       "quantity": 1
     }
   }

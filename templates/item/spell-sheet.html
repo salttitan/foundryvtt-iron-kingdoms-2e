@@ -23,6 +23,9 @@
                     <th class="resource-label">
                         OFF
                     </th>
+                    <th class="resource-label">
+                        ARC
+                    </th>
                 </tr>
                 <tr>
                     <td>
@@ -43,8 +46,18 @@
                     <td>
                         <input type="checkbox" name="data.off.value" value="{{data.off.value}}" {{checked data.off.value}}/>
                     </td>
+                    <td>
+                        <input type="text" name="data.arc.value" value="{{data.arc.value}}" data-type="Number"/>
+                    </td>
                 </tr>
             </table>
+            <span class="attack rollable" data-roll="2d6+@arc.value" data-label="Magic Attack">Attack</span>
+            <span>|</span>
+            <span class="attack rollable" data-roll="3d6+@arc.value" data-label="Boosted Magic Attack">Boosted Attack</span>
+            <span>|</span>
+            <span class="attack rollable" data-roll="2d6+@pow.value" data-label="Magic Damage">Damage</span>
+            <span>|</span>
+            <span class="attack rollable" data-roll="3d6+@pow.value" data-label="Boosted Magic Damage">Boosted Damage</span>
         </div>
     </header>
 

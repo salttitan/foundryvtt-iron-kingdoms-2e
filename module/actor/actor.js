@@ -17,6 +17,7 @@ export class ikrpgActor extends Actor {
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
     if (actorData.type === 'character') this._prepareCharacterData(actorData);
+    if (actorData.type === 'steamjack') this._prepartSteamjackData(actorData);
   }
 
   /**
@@ -61,6 +62,17 @@ export class ikrpgActor extends Actor {
     health.column.four.max = four;
     health.column.five.max = five;
     health.column.six.max = six;
+  }
+
+  _prepartSteamjackData(actorData) {
+    const data = actorData.data;
+    const primary = data.stats.primary;
+    const secondary = data.stats.secondary;
+    const derived = data.stats.derived;
+    const mods = data.stats.modifiers;
+
+    //Add shield to armor value
+    derived.arm.value = mods.arm.shield.value + mods.arm.armor.value;
   }
 
 }

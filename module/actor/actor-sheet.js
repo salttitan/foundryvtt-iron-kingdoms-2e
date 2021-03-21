@@ -11,13 +11,18 @@ export class ikrpgActorSheet extends ActorSheet {
       template: "systems/ikrpg2e/templates/actor/actor-sheet.html",
       width: 600,
       height: 650,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
 
   /* -------------------------------------------- */
 
   /** @override */
+  get template() {
+    const path = "systems/ikrpg2e/templates/actor";
+
+    return `${path}/${this.actor.data.type}-sheet.html`;
+  }
   getData() {
     const data = super.getData();
     data.dtypes = ["String", "Number", "Boolean"];
@@ -31,12 +36,17 @@ export class ikrpgActorSheet extends ActorSheet {
       this._prepareCharacterHealth(data);
     }
 
+    if (this.actor.data.type == 'steamjack') {
+      this._prepareSteamjackItems(data);
+    }
+
     return data;
   }
 
   _prepareCharacterHealth(sheetData) {
     const actorData = sheetData.actor;
     const health = actorData.data.health;
+    // console.log(health);
     
     // Start the health grid div
     let str = "<div style='border: 1px solid rgba(0,0,0,.125); border-radius: .25rem; font-size: 10px; width: 200px;'>"
@@ -92,6 +102,8 @@ export class ikrpgActorSheet extends ActorSheet {
     const careers = [];
     const archetypes = [];
     const gear = [];
+    const races = [];
+    const armors = [];
 
     //Iterate through items, allocating to containers
     for (let i of sheetData.items) {
@@ -99,6 +111,7 @@ export class ikrpgActorSheet extends ActorSheet {
       i.img = i.img || DEFAULT_TOKEN;
       if (i.type === 'item') {
         gear.push(i);
+        console.log(gear);
       }
 
       if (i.type === 'ranged weapon') {
@@ -117,7 +130,7 @@ export class ikrpgActorSheet extends ActorSheet {
         abilities.push(i);
       }
 
-      if (i.type === 'skills') {
+      if (i.type === 'skill') {
         skills.push(i);
       }
 
@@ -127,6 +140,14 @@ export class ikrpgActorSheet extends ActorSheet {
 
       if (i.type === 'archetype') {
         archetypes.push(i);
+      }
+
+      if (i.type === 'race') {
+        races.push(i);
+      }
+
+      if (i.type === 'armor'){
+        armors.push(i);
       }
     }
 
@@ -138,6 +159,46 @@ export class ikrpgActorSheet extends ActorSheet {
     actorData.skills = skills;
     actorData.careers = careers;
     actorData.archetypes = archetypes;
+    actorData.races = races;
+    actorData.armors = armors;
+  }
+
+  _prepareSteamjackItems(sheetData){
+    const actorData = sheetData.actor;
+
+    //Initialize containers
+    const rangedWeapons = [];
+    const meleeWeapons = [];
+    const gear = [];
+    const cortex = [];
+
+    //Iterate through items, allocating to containers
+    for (let i of sheetData.items) {
+      let item = i.data;
+      i.img = i.img || DEFAULT_TOKEN;
+      if (i.type === 'steamjack gear') {
+        if (i.steamjack.value){
+          gear.push(i);
+        }
+      }
+
+      if (i.type === 'ranged weapon') {
+        rangedWeapons.push(i);
+      }
+
+      if (i.type === 'melee weapon') {
+        meleeWeapons.push(i);
+      }
+
+      if (i.type === 'cortex') {
+        cortex.push(i);
+      }
+    }
+
+    actorData.gear = gear;
+    actorData.rangedWeapons = rangedWeapons;
+    actorData.meleeWeapons = meleeWeapons;
+    actorData.cortex = cortex;
   }
 
   /** @override */
