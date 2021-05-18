@@ -76,6 +76,10 @@ export class ikrpgItem extends Item {
     data.equippedRunes.rune4.cost = data.runes[rune4].cost;
     data.equippedRunes.rune4.points = data.runes[rune4].points;
     data.equippedRunes.rune4.effect = data.runes[rune4].effect;
+
+    //Calculate total equipped rune cost
+    data.equippedRunes.totalPoints = data.equippedRunes.rune0.points + data.equippedRunes.rune1.points + data.equippedRunes.rune2.points + data.equippedRunes.rune3.points + data.equippedRunes.rune4.points;
+    
   }
 
   _prepareGrid(itemData, actorData) {

@@ -95,8 +95,8 @@
         <div class="tab mechanika" data-group="primary" data-tab="mechanika">
             <div class="grid grid-3col">
                 <label class="resource-label flexrow">Power</label>
-                <label class="resource-label flexrow">Runeplate</label><span></span>
-                <div class="resource flexrow">
+                <label class="resource-label flexrow">Runeplate ({{data.equippedRunes.totalPoints}}/{{data.powerSource.powerOutput}})</label><span></span>
+                <div class="resource">
                     <div class="resource flexcol">
                         <label>Source</label>
                         <select class="selectMech" name="data.powerSource.value" data-type="String">
@@ -189,21 +189,6 @@
                     <label>Cost: {{data.equippedRunes.rune4.cost}}gc</label>
                     <label>Rune Points: {{data.equippedRunes.rune4.points}}</label>
                 </div>
-                <!-- <div class="resource flexcol">
-                    <label>Requirements: {{data.powerSource.requirements}}</label>
-                    <label>Material Costs: {{data.powerSource.materialCost}}</label>
-                </div>
-                <div class="resource flexcol" >
-                    <label>Description:</label>
-                    {{data.powerSource.description}}
-                    <span></span>
-                    <label>Special Rules:</label>
-                    {{data.powerSource.special}}
-                </div>
-                <div class="resource flexrow">
-                    <label>Fabrication</label>
-                    {{data.powerSource.fabrication}}
-                </div> -->
             </div>
         </div>
     </section>

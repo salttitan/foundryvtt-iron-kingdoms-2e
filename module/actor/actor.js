@@ -18,6 +18,7 @@ export class ikrpgActor extends Actor {
     // things organized.
     if (actorData.type === 'character') this._prepareCharacterData(actorData);
     if (actorData.type === 'steamjack') this._prepartSteamjackData(actorData);
+    if (actorData.type === 'grunt') this._prepareGruntData(actorData);
   }
 
   /**
@@ -52,7 +53,55 @@ export class ikrpgActor extends Actor {
     let five = primary.int.value - six;
 
     // Create grid array
-    health.grid = [one,two,three,four,five,six];
+    
+    let columnOne = health.grid.one;
+    for (let i = 0; i < columnOne.length; i++) {
+      
+      if (one > i) {
+        columnOne[i] = true;
+      }
+    }
+
+    let columnTwo = health.grid.two;
+    for (let i = 0; i < columnTwo.length; i++) {
+      
+      if (two > i) {
+        columnTwo[i] = true;
+      }
+    }
+  
+    let columnThree = health.grid.three;
+    for (let i = 0; i < columnThree.length; i++) {
+      
+      if (three > i) {
+        columnThree[i] = true;
+      }
+    }
+
+    let columnFour = health.grid.four;
+    for (let i = 0; i < columnFour.length; i++) {
+      
+      if (four > i) {
+        columnFour[i] = true;
+      }
+    }
+
+    let columnFive = health.grid.five;
+    for (let i = 0; i < columnFive.length; i++) {
+      
+      if (five > i) {
+        columnFive[i] = true;
+      }
+    }
+
+    let columnSix = health.grid.six;
+    for (let i = 0; i < columnSix.length; i++) {
+      
+      if (four > i) {
+        columnSix[i] = true;
+      }
+    }
+    
     console.log(health.grid);
 
     // Set max values - not sure if I still need this
@@ -62,6 +111,22 @@ export class ikrpgActor extends Actor {
     health.column.four.max = four;
     health.column.five.max = five;
     health.column.six.max = six;
+
+    // Set Magic
+    const selectedTradition = data.magic.tradition.label;
+    const tradition = data.magic.tradition;
+    const traditions = data.magic.traditions;
+
+    console.log(data.magic.tradition);
+
+    tradition.resource.label = traditions[selectedTradition].resource.label;
+    if(tradition.label === "focuser") {
+      console.log("Focuser");
+      tradition.resource.max = secondary.arc.value;
+    } else if (tradition.label === "will_weaver") {
+      console.log("Focuser");
+      tradition.resource.max = (secondary.arc.value * 2);
+    }
   }
 
   _prepartSteamjackData(actorData) {
@@ -75,4 +140,9 @@ export class ikrpgActor extends Actor {
     derived.arm.value = mods.arm.shield.value + mods.arm.armor.value;
   }
 
+  _prepareGruntData(actorData) {
+    
+    
+
+  }
 }

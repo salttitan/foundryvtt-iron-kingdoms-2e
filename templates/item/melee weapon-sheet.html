@@ -55,14 +55,127 @@
                     <label class="resource-label">Equipped</label>
                     <input type="checkbox" name="data.equipped" value="{{data.equipped}}" {{checked data.equipped}}/>
                 </div>
+                <div class="resource">
+                    <label class="resource-label">Steamjack</label>
+                    <input type="checkbox" name="data.steamjack.value" value="{{data.steamjack.value}}" {{checked data.steamjack.value}}/>
+                </div>
+                {{#if data.steamjack.value}}
+                <div class="resource">
+                    <label class="resource-label">Chassis Size</label>
+                    <select class="selectMech" name="data.steamjack.type" data-type="String">
+                        {{#select data.steamjack.type}}
+
+                        {{#each data.steamjack.types as |type key|}}
+                        <option value="{{key}}">{{type}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+                {{/if}}
             </div>
-            <label class="resource-label">Description</label>
-            {{editor content=data.description target="data.description" button=true owner=owner editable=editable placeholder="Description"}}
+            <label class="resource-label">Special Rules</label>
+            {{editor content=data.special target="data.special" button=true owner=owner editable=editable placeholder="Description"}}
         </div>
 
         {{!-- Mechanika Tab --}}
         <div class="tab mechanika" data-group="primary" data-tab="mechanika">
-            Hello
+            <div class="grid grid-3col">
+                <label class="resource-label flexrow">Power</label>
+                <label class="resource-label flexrow">Runeplate ({{data.equippedRunes.totalPoints}}/{{data.powerSource.powerOutput}})</label><span></span>
+                <div class="resource">
+                    <div class="resource flexcol">
+                        <label>Source</label>
+                        <select class="selectMech" name="data.powerSource.value" data-type="String">
+                            {{#select data.powerSource.value}}
+    
+                            {{#each data.powerSources as |source key|}}
+    
+                            <option value="{{key}}">{{source.label}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                        <!-- <label>Cost: {{data.powerSource.cost}}</label> -->
+                        <label>Output: {{data.powerSource.powerOutput}}</label>
+                        <label>Lifespan: {{data.powerSource.lifespan}}</label>
+                    </div>
+                </div>
+                
+               
+                <div class="resource flexcol">
+                    <div class="resource flexrow">
+                        <select class="selectMech" name="data.equippedRunes.rune0.value" data-type="String">
+                            {{#select data.equippedRunes.rune0.value}}
+    
+                            {{#each data.runes as |rune key|}}
+                            <option value="{{key}}">{{rune.label}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                    <div class="resource flexrow">
+                        <select class="selectMech" name="data.equippedRunes.rune1.value" data-type="String">
+                            {{#select data.equippedRunes.rune1.value}}
+    
+                            {{#each data.runes as |rune key|}}
+                            <option value="{{key}}">{{rune.label}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                    <div class="resource flexrow">
+                        <select class="selectMech" name="data.equippedRunes.rune2.value" data-type="String">
+                            {{#select data.equippedRunes.rune2.value}}
+    
+                            {{#each data.runes as |rune key|}}
+                            <option value="{{key}}">{{rune.label}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                    <div class="resource flexrow">
+                        <select class="selectMech" name="data.equippedRunes.rune3.value" data-type="String">
+                            {{#select data.equippedRunes.rune3.value}}
+    
+                            {{#each data.runes as |rune key|}}
+                            <option value="{{key}}">{{rune.label}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                    <div class="resource flexrow">
+                        <select class="selectMech" name="data.equippedRunes.rune4.value" data-type="String">
+                            {{#select data.equippedRunes.rune4.value}}
+    
+                            {{#each data.runes as |rune key|}}
+                            <option value="{{key}}">{{rune.label}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
+               
+                <div class="resource flexcol">
+                    <label>Type: {{data.equippedRunes.rune0.type}}</label>
+                    <label>Cost: {{data.equippedRunes.rune0.cost}}gc</label>
+                    <label>Rune Points: {{data.equippedRunes.rune0.points}}</label>
+
+                    <label>Type: {{data.equippedRunes.rune1.type}}</label>
+                    <label>Cost: {{data.equippedRunes.rune1.cost}}gc</label>
+                    <label>Rune Points: {{data.equippedRunes.rune1.points}}</label>
+
+                    <label>Type: {{data.equippedRunes.rune2.type}}</label>
+                    <label>Cost: {{data.equippedRunes.rune2.cost}}gc</label>
+                    <label>Rune Points: {{data.equippedRunes.rune2.points}}</label>
+
+                    <label>Type: {{data.equippedRunes.rune3.type}}</label>
+                    <label>Cost: {{data.equippedRunes.rune3.cost}}gc</label>
+                    <label>Rune Points: {{data.equippedRunes.rune3.points}}</label>
+
+                    <label>Type: {{data.equippedRunes.rune4.type}}</label>
+                    <label>Cost: {{data.equippedRunes.rune4.cost}}gc</label>
+                    <label>Rune Points: {{data.equippedRunes.rune4.points}}</label>
+                </div>
+            </div>
         </div>
     </section>
 </form>

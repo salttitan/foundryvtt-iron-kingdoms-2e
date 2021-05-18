@@ -263,12 +263,12 @@
 }
 
 * .health {
-  width: 50%;
+  /* width: 50%; */
   /* display: flex; */
   /* Hide the browser's default checkbox */
   /* flex-wrap: wrap; */
 }
-/* 
+
 * .health label {
   height: 15px;
   width: 15px;
@@ -279,18 +279,60 @@
   cursor: pointer;
 }
 
-* .health label[for$="-0"] {
-  margin-right: 0px;
+* .health .zero-label {
+  height: 15px;
+  width: 15px;
+  background-color: pink;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: pointer;
+  margin-right: 3px;
 }
+
+* .health1 label {
+  height: 15px;
+  width: 15px;
+  background-color: #005b7f;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+
+* .health2 label {
+  height: 15px;
+  width: 15px;
+  background-color: #881b1e;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+
+* .health3 label {
+  height: 15px;
+  width: 15px;
+  background-color: #134d11;
+  vertical-align: middle;
+  border: 1px solid #191813;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+
+/* * .health label[for$="-0"] {
+  margin-right: 0px;
+} */
 
 * .health label:hover {
   filter: brightness(0.8); 
   opacity: 0.9;
-} */
-/* * .health input {
+}
+* .health input {
   display: none;
-} */
-/* * .health input:checked ~ label {
+  width: 0px;
+}
+* .health input:checked ~ label {
   background-color: #EEEFFF;
 }
 
@@ -298,11 +340,16 @@
   background-color: #DAA520;
 }
 
-* .health input ~ label {
-  margin-right: 3px;
-  margin-bottom: 3px;
-  transition: filter 0.2s;
-  cursor: pointer;
+* .health1 input:checked + label {
+  background-color: #005b7f;
+}
+
+* .health2 input:checked + label {
+  background-color: #881b1e;
+}
+
+* .health3 input:checked + label {
+  background-color: #134d11;
 }
 
 * .health input ~ label {
@@ -319,4 +366,4 @@
 * .health input ~ label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-} */
+}

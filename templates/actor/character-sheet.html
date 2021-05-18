@@ -26,39 +26,6 @@
                   <span class="ability-mod">{{numberFormat data.stats.derived.cmd.value decimals=0 sign=true}}</span>
                 </div>              
             </div>
-            <h3>Health</h3>
-            <div class="grid grid-7col">
-              <div class="ability flexcol flex-group-center">
-                <label for="data.health.column.one" class="resource-label">1</label>
-                <input type="number" name="data.health.column.one.value" value="{{data.health.column.one.value}}" data-dtype="Number"/> {{data.health.column.one.max}}
-              </div>
-              <div class="ability flexcol flex-group-center">
-                <label for="data.health.column.two" class="resource-label">2</label>
-                <input type="number" name="data.health.column.two.value" value="{{data.health.column.two.value}}" data-dtype="Number"/> {{data.health.column.two.max}}
-              </div>
-              <div class="ability flexcol flex-group-center">
-                <label for="data.health.column.three" class="resource-label">3</label>
-                <input type="number" name="data.health.column.three.value" value="{{data.health.column.three.value}}" data-dtype="Number"/> {{data.health.column.three.max}}
-              </div>
-              <div class="ability flexcol flex-group-center">
-                <label for="data.health.column.four" class="resource-label">4</label>
-                <input type="number" name="data.health.column.four.value" value="{{data.health.column.four.value}}" data-dtype="Number"/> {{data.health.column.four.max}}
-              </div>
-              <div class="ability flexcol flex-group-center">
-                <label for="data.health.column.five" class="resource-label">5</label>
-                <input type="number" name="data.health.column.five.value" value="{{data.health.column.five.value}}" data-dtype="Number"/> {{data.health.column.five.max}}
-              </div>
-              <div class="ability flexcol flex-group-center">
-                <label for="data.health.column.six" class="resource-label">6</label>
-                <input type="number" name="data.health.column.six.value" value="{{data.health.column.six.value}}" data-dtype="Number"/> {{data.health.column.six.max}}
-              </div>
-              <div class="ability flexrow flex-group-center">
-                <label for="data.health.bonus" class="resource-label">Armor</label>
-                <input type="number" name="data.health.bonus.value" value="{{data.health.bonus.value}}" data-dtype="Number"/>
-                <span>/</span>
-                <input type="number" name="data.health.bonus.max" value="{{data.health.bonus.max}}" data-dtype="Number"/>
-              </div>
-            </div>
           
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -158,6 +125,8 @@
                 <li class="item flexrow" data-item-id="{{skill._id}}">
                     <div class="item-image"><img src="{{skill.img}}" title="{{skill.name}}" width="24" height="24"/></div>
                     <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{skill.name}}</a></h4>
+                    <h4 class="resource-label">{{skill.parent}}</h4>
+                    <h4 class="resource-label">{{skill.value}}</h4>
                     <div class="item-controls">
                         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                     </div>
@@ -186,6 +155,28 @@
 
         {{!-- Spells Tab --}}
         <div class="tab items" data-group="primary" data-tab="spells">
+            <div class="flexrow">
+              <div>
+                <label class="item-name">Tradition</label>
+                <select class="selectMagic" name="data.magic.tradition.label" data-type="String">
+                  {{#select data.magic.tradition.label}}
+                    {{#each data.magic.traditions as |tradition key|}}
+                    <option value="{{key}}">{{tradition.label}}</option>
+                    {{/each}}
+                  {{/select}}
+                </select>
+              </div>
+              <div class="resource flexrow">
+                <label class="resource-label">{{data.magic.tradition.resource.label}}</label>
+                <input type="number" name="data.magic.tradition.resource.value" value="{{data.magic.tradition.resource.value}}" data-dtype="Number"/>
+                <p>/</p>
+                <p>{{data.magic.tradition.resource.max}}</p>
+              </div>
+              <!-- <div>
+                <p><a class="item-control reset-magic" title="Pass Turn">New Turn</a></p>
+              </div> -->
+            </div>
+            
             <ol class="items-list">
                 <li class="item flexrow item-header" id="spell-table-header" style="height: 40px;">
                   <div class="item-image"></div>
@@ -425,16 +416,204 @@
 
         {{!-- Stats Tab --}}
         <div class="tab ability flexrow" data-group="primary" data-tab="stats">
-            <ul class="stats flexcol">
+          <div class="flexcol" style="height: 50%;">
+            <div class="flexrow">
+              <span>Column</span>
+              <span style="text-align: right;">Max</span>
+            </div>
+            <div class="health health1 flexrow">
+              <span>1</span>
+              <label for="health-{{actor._id}}-col1-0" class="zero-label"></label>
+              {{#multiboxes data.health.column.one.value}}
+              <input type="radio" id="health-{{actor._id}}-col1-0" name="data.health.column.one.value" value="0" checked="checked">
+              <input type="radio" id="health-{{actor._id}}-col1-1" name="data.health.column.one.value" value="1">
+              <label for="health-{{actor._id}}-col1-1"></label>
+              <input type="radio" id="health-{{actor._id}}-col1-2" name="data.health.column.one.value" value="2">
+              <label for="health-{{actor._id}}-col1-2"></label>
+              <input type="radio" id="health-{{actor._id}}-col1-3" name="data.health.column.one.value" value="3">
+              <label for="health-{{actor._id}}-col1-3"></label>
+              <input type="radio" id="health-{{actor._id}}-col1-4" name="data.health.column.one.value" value="4">
+              <label for="health-{{actor._id}}-col1-4"></label>
+              <input type="radio" id="health-{{actor._id}}-col1-5" name="data.health.column.one.value" value="5">
+              <label for="health-{{actor._id}}-col1-5"></label>
+              <input type="radio" id="health-{{actor._id}}-col1-6" name="data.health.column.one.value" value="6">
+              <label for="health-{{actor._id}}-col1-6"></label>
+              <input type="radio" id="health-{{actor._id}}-col1-7" name="data.health.column.one.value" value="7">
+              <label for="health-{{actor._id}}-col1-7"></label>
+              <input type="radio" id="health-{{actor._id}}-col1-8" name="data.health.column.one.value" value="8">
+              <label for="health-{{actor._id}}-col1-8"></label>
+              <input type="radio" id="health-{{actor._id}}-col1-9" name="data.health.column.one.value" value="9">
+              <label for="health-{{actor._id}}-col1-9"></label>
+              {{/multiboxes}}
+              <span>{{data.health.column.one.max}}</span>
+            </div>
+            <div class="health health1 flexrow">
+              <span>2</span>
+              <label for="health-{{actor._id}}-col2-0" class="zero-label"></label>
+              {{#multiboxes data.health.column.two.value}}
+              <input type="radio" id="health-{{actor._id}}-col2-0" name="data.health.column.two.value" value="0" checked="checked">
+              <input type="radio" id="health-{{actor._id}}-col2-1" name="data.health.column.two.value" value="1">
+              <label for="health-{{actor._id}}-col2-1"></label>
+              <input type="radio" id="health-{{actor._id}}-col2-2" name="data.health.column.two.value" value="2">
+              <label for="health-{{actor._id}}-col2-2"></label>
+              <input type="radio" id="health-{{actor._id}}-col2-3" name="data.health.column.two.value" value="3">
+              <label for="health-{{actor._id}}-col2-3"></label>
+              <input type="radio" id="health-{{actor._id}}-col2-4" name="data.health.column.two.value" value="4">
+              <label for="health-{{actor._id}}-col2-4"></label>
+              <input type="radio" id="health-{{actor._id}}-col2-5" name="data.health.column.two.value" value="5">
+              <label for="health-{{actor._id}}-col2-5"></label>
+              <input type="radio" id="health-{{actor._id}}-col2-6" name="data.health.column.two.value" value="6">
+              <label for="health-{{actor._id}}-col2-6"></label>
+              <input type="radio" id="health-{{actor._id}}-col2-7" name="data.health.column.two.value" value="7">
+              <label for="health-{{actor._id}}-col2-7"></label>
+              <input type="radio" id="health-{{actor._id}}-col2-8" name="data.health.column.two.value" value="8">
+              <label for="health-{{actor._id}}-col2-8"></label>
+              <input type="radio" id="health-{{actor._id}}-col2-9" name="data.health.column.two.value" value="9">
+              <label for="health-{{actor._id}}-col2-9"></label>
+              {{/multiboxes}}
+              <span>{{data.health.column.two.max}}</span>
+            </div>
+            <div class="health health2 flexrow">
+              <span>3</span>
+              <label for="health-{{actor._id}}-col3-0" class="zero-label"></label>
+              {{#multiboxes data.health.column.three.value}}
+              <input type="radio" id="health-{{actor._id}}-col3-0" name="data.health.column.three.value" value="0" checked="checked">
+              <input type="radio" id="health-{{actor._id}}-col3-1" name="data.health.column.three.value" value="1">
+              <label for="health-{{actor._id}}-col3-1"></label>
+              <input type="radio" id="health-{{actor._id}}-col3-2" name="data.health.column.three.value" value="2">
+              <label for="health-{{actor._id}}-col3-2"></label>
+              <input type="radio" id="health-{{actor._id}}-col3-3" name="data.health.column.three.value" value="3">
+              <label for="health-{{actor._id}}-col3-3"></label>
+              <input type="radio" id="health-{{actor._id}}-col3-4" name="data.health.column.three.value" value="4">
+              <label for="health-{{actor._id}}-col3-4"></label>
+              <input type="radio" id="health-{{actor._id}}-col3-5" name="data.health.column.three.value" value="5">
+              <label for="health-{{actor._id}}-col3-5"></label>
+              <input type="radio" id="health-{{actor._id}}-col3-6" name="data.health.column.three.value" value="6">
+              <label for="health-{{actor._id}}-col3-6"></label>
+              <input type="radio" id="health-{{actor._id}}-col3-7" name="data.health.column.three.value" value="7">
+              <label for="health-{{actor._id}}-col3-7"></label>
+              <input type="radio" id="health-{{actor._id}}-col3-8" name="data.health.column.three.value" value="8">
+              <label for="health-{{actor._id}}-col3-8"></label>
+              <input type="radio" id="health-{{actor._id}}-col3-9" name="data.health.column.three.value" value="9">
+              <label for="health-{{actor._id}}-col3-9"></label>
+              {{/multiboxes}}
+              <span>{{data.health.column.three.max}}</span>
+            </div>
+            <div class="health health2 flexrow">
+              <span>4</span>
+              <label for="health-{{actor._id}}-col4-0" class="zero-label"></label>
+              {{#multiboxes data.health.column.four.value}}
+              <input type="radio" id="health-{{actor._id}}-col4-0" name="data.health.column.four.value" value="0" checked="checked">
+              <input type="radio" id="health-{{actor._id}}-col4-1" name="data.health.column.four.value" value="1">
+              <label for="health-{{actor._id}}-col4-1"></label>
+              <input type="radio" id="health-{{actor._id}}-col4-2" name="data.health.column.four.value" value="2">
+              <label for="health-{{actor._id}}-col4-2"></label>
+              <input type="radio" id="health-{{actor._id}}-col4-3" name="data.health.column.four.value" value="3">
+              <label for="health-{{actor._id}}-col4-3"></label>
+              <input type="radio" id="health-{{actor._id}}-col4-4" name="data.health.column.four.value" value="4">
+              <label for="health-{{actor._id}}-col4-4"></label>
+              <input type="radio" id="health-{{actor._id}}-col4-5" name="data.health.column.four.value" value="5">
+              <label for="health-{{actor._id}}-col4-5"></label>
+              <input type="radio" id="health-{{actor._id}}-col4-6" name="data.health.column.four.value" value="6">
+              <label for="health-{{actor._id}}-col4-6"></label>
+              <input type="radio" id="health-{{actor._id}}-col4-7" name="data.health.column.four.value" value="7">
+              <label for="health-{{actor._id}}-col4-7"></label>
+              <input type="radio" id="health-{{actor._id}}-col4-8" name="data.health.column.four.value" value="8">
+              <label for="health-{{actor._id}}-col4-8"></label>
+              <input type="radio" id="health-{{actor._id}}-col4-9" name="data.health.column.four.value" value="9">
+              <label for="health-{{actor._id}}-col4-9"></label>
+              {{/multiboxes}}
+              <span>{{data.health.column.four.max}}</span>
+            </div>
+            <div class="health health3 flexrow">
+              <span>5</span>
+              <label for="health-{{actor._id}}-col5-0" class="zero-label"></label>
+              {{#multiboxes data.health.column.five.value}}
+              <input type="radio" id="health-{{actor._id}}-col5-0" name="data.health.column.five.value" value="0" checked="checked">
+              <input type="radio" id="health-{{actor._id}}-col5-1" name="data.health.column.five.value" value="1">
+              <label for="health-{{actor._id}}-col5-1"></label>
+              <input type="radio" id="health-{{actor._id}}-col5-2" name="data.health.column.five.value" value="2">
+              <label for="health-{{actor._id}}-col5-2"></label>
+              <input type="radio" id="health-{{actor._id}}-col5-3" name="data.health.column.five.value" value="3">
+              <label for="health-{{actor._id}}-col5-3"></label>
+              <input type="radio" id="health-{{actor._id}}-col5-4" name="data.health.column.five.value" value="4">
+              <label for="health-{{actor._id}}-col5-4"></label>
+              <input type="radio" id="health-{{actor._id}}-col5-5" name="data.health.column.five.value" value="5">
+              <label for="health-{{actor._id}}-col5-5"></label>
+              <input type="radio" id="health-{{actor._id}}-col5-6" name="data.health.column.five.value" value="6">
+              <label for="health-{{actor._id}}-col5-6"></label>
+              <input type="radio" id="health-{{actor._id}}-col5-7" name="data.health.column.five.value" value="7">
+              <label for="health-{{actor._id}}-col5-7"></label>
+              <input type="radio" id="health-{{actor._id}}-col5-8" name="data.health.column.five.value" value="8">
+              <label for="health-{{actor._id}}-col5-8"></label>
+              <input type="radio" id="health-{{actor._id}}-col5-9" name="data.health.column.five.value" value="9">
+              <label for="health-{{actor._id}}-col5-9"></label>
+              {{/multiboxes}}
+              <span>{{data.health.column.five.max}}</span>
+            </div>
+            <div class="health health3 flexrow">
+              <span>6</span>
+              {{#multiboxes data.health.column.six.value}}
+              <label for="health-{{actor._id}}-col6-0" class="zero-label"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-0" name="data.health.column.six.value" value="0" checked="checked">
+              <input type="radio" id="health-{{actor._id}}-col6-1" name="data.health.column.six.value" value="1">
+              <label for="health-{{actor._id}}-col6-1"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-2" name="data.health.column.six.value" value="2">
+              <label for="health-{{actor._id}}-col6-2"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-3" name="data.health.column.six.value" value="3">
+              <label for="health-{{actor._id}}-col6-3"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-4" name="data.health.column.six.value" value="4">
+              <label for="health-{{actor._id}}-col6-4"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-5" name="data.health.column.six.value" value="5">
+              <label for="health-{{actor._id}}-col6-5"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-6" name="data.health.column.six.value" value="6">
+              <label for="health-{{actor._id}}-col6-6"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-7" name="data.health.column.six.value" value="7">
+              <label for="health-{{actor._id}}-col6-7"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-8" name="data.health.column.six.value" value="8">
+              <label for="health-{{actor._id}}-col6-8"></label>
+              <input type="radio" id="health-{{actor._id}}-col6-9" name="data.health.column.six.value" value="9">
+              <label for="health-{{actor._id}}-col6-9"></label>
+              {{/multiboxes}}
+              <span>{{data.health.column.six.max}}</span>
+            </div>
+            <span>Power Field / Armor</span>
+            <div class="health flexrow">
+              {{#multiboxes data.health.bonus.value}}
+              <label for="health-{{actor._id}}-bonus-0" class="zero-label"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-0" name="data.health.bonus.value" value="0" checked="checked">
+              <input type="radio" id="health-{{actor._id}}-bonus-1" name="data.health.bonus.value" value="1">
+              <label for="health-{{actor._id}}-bonus-1"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-2" name="data.health.bonus.value" value="2">
+              <label for="health-{{actor._id}}-bonus-2"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-3" name="data.health.bonus.value" value="3">
+              <label for="health-{{actor._id}}-bonus-3"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-4" name="data.health.bonus.value" value="4">
+              <label for="health-{{actor._id}}-bonus-4"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-5" name="data.health.bonus.value" value="5">
+              <label for="health-{{actor._id}}-bonus-5"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-6" name="data.health.bonus.value" value="6">
+              <label for="health-{{actor._id}}-bonus-6"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-7" name="data.health.bonus.value" value="7">
+              <label for="health-{{actor._id}}-bonus-7"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-8" name="data.health.bonus.value" value="8">
+              <label for="health-{{actor._id}}-bonus-8"></label>
+              <input type="radio" id="health-{{actor._id}}-bonus-9" name="data.health.bonus.value" value="9">
+              <label for="health-{{actor._id}}-bonus-9"></label>
+              {{/multiboxes}}
+              <span>{{data.health.bonus.max}}</span>
+            </div>
+          </div>
+            <ul class="stats flexcol" style="height: 50%">
               {{#each data.stats.primary as |primary key|}}
-                <li class="ability flexrow flex-group-left" style="margin-bottom: 40px;">
+                <li class="ability flexrow flex-group-left" style="margin-bottom: 40px; height: 60px;">
                   <label for="data.stats.primary.{{key}}.value" class="resource-label">{{key}}</label>
                   <input type="text" name="data.stats.primary.{{key}}.value" value="{{primary.value}}" data-dtype="Number"/>
                   <!-- <span class="ability-mod rollable" data-roll="2d6+@stat.{{key}}.value" data-label="{{key}}">{{numberFormat ability.mod decimals=0 sign=true}}</span> -->
                 </li>
               {{/each}}
               </ul>
-            <ul class="stats flexcol" >
+            <ul class="stats flexcol" style="height: 50%;">
               {{#each data.stats.secondary as |secondary key|}}
                 <li class="ability flexrow flex-group-left">
                   <label for="data.stats.secondary.{{key}}.value" class="resource-label">{{key}}</label>
@@ -443,7 +622,7 @@
                 </li>
               {{/each}}
             </ul>
-            <div>
+            <div style="height: 50%;">
               <div class="resource flex-group-center">
                 <label for="data.stats.modifiers.def" class="resource-label">DEF Modifiers</label>
                 <ul class="resource-content flexcol flex-center flex-between">
@@ -471,6 +650,10 @@
                   <li class="ability flexrow">
                     <label for="data.stats.modifiers.arm.other.value">Other: </label>
                     <input type="text" name="data.stats.modifiers.arm.other.value" value="{{data.stats.modifiers.arm.other.value}}" data-dtype="Number"/>
+                  </li>
+                  <li class="ability flexrow">
+                    <label for="data.health.bonus.max">Boxes:</label>
+                    <input type="number" name="data.health.bonus.max" value="{{data.health.bonus.max}}" data-dtype="Number"/>
                   </li>
                 </div>
               <div class="resource flex-group-center">

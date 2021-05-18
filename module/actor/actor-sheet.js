@@ -86,7 +86,6 @@ export class ikrpgActorSheet extends ActorSheet {
 
     actorData.str = str;
     
-    
   }
 
 
@@ -213,6 +212,7 @@ export class ikrpgActorSheet extends ActorSheet {
 
     // Update Inventory Item
     html.find('.item-edit').click(ev => {
+      console.log(ev);
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.getOwnedItem(li.data("itemId"));
       item.sheet.render(true);
@@ -227,6 +227,9 @@ export class ikrpgActorSheet extends ActorSheet {
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this));
+
+    // Magic Resource Reset
+    html.find('.reset-magic').click(this._resetMagic(this));
   }
 
   /* -------------------------------------------- */
@@ -280,4 +283,19 @@ export class ikrpgActorSheet extends ActorSheet {
     }
   }
 
+  _resetMagic(data) {
+    // console.log(data);
+    // const actorData = sheetData.actor;
+    // const arc = actorData.stats.secondary.arc.value;
+    // if (actorData.magic.tradition.label === "focuser") {
+    //   actorData.magic.tradition.resource.value = actorData.magic.tradition.resource.max;
+    // } else if (actorData.magic.tradition.label === 'will_weaver') {
+    //   let currentValue = actorData.magic.tradition.resource.value;
+    //   if (currentValue > arc) {
+    //     actorData.magic.tradition.resource.value = (currentValue - arc);
+    //   } else {
+    //     actorData.magic.tradition.resource.value = 0
+    //   }
+    // } 
+  }
 }

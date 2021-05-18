@@ -38,40 +38,91 @@
         }
       },
       "character": {
+        "featPoints": {
+          "max": 3,
+          "value": 3
+        },
+        "magic": {
+          "tradition": {
+            "label": "",
+            "resource": {
+              "label": "",
+              "max": 0,
+              "value": 0,
+              "min": 0
+            }
+          },
+          "traditions": {
+            "none": {
+              "label": "None",
+              "resource": {
+                "label": "none",
+                "max": 0,
+                "value": 0,
+                "min": 0
+              }
+            },
+            "focuser": {
+              "label": "Focuser",
+              "resource": {
+                "label": "Focus",
+                "max": 0,
+                "value": 0,
+                "min": 0
+              }
+            },
+            "will_weaver": {
+              "label": "Will Weaver",
+              "resource": {
+                "label": "Fatigue",
+                "max": 0,
+                "value": 0,
+                "min": 0
+              }
+            }
+          }
+        },
         "health": {
-          "grid": [],
+          "grid": {
+            "one": [false, false, false, false, false, false, false, false, false, false ],
+            "two": [false, false, false, false, false, false, false, false, false, false ],
+            "three": [false, false, false, false, false, false, false, false, false, false ],
+            "four": [false, false, false, false, false, false, false, false, false, false ],
+            "five": [false, false, false, false, false, false, false, false, false, false ],
+            "six": [false, false, false, false, false, false, false, false, false, false ]
+          },
           "bonus": {
             "value": 0,
             "max": 0
           },
           "column": {
             "one": {
-              "value": [1],
+              "value": 1,
               "max": 1,
               "min": 0
             },
             "two": {
-              "value": [1],
+              "value": 1,
               "max": 1,
               "min": 0
             },
             "three": {
-              "value": [1],
+              "value": 1,
               "max": 1,
               "min": 0
             },
             "four": {
-              "value": [1],
+              "value": 1,
               "max": 1,
               "min": 0
             },
             "five": {
-              "value": [1],
+              "value": 1,
               "max": 1,
               "min": 0
             },
             "six": {
-              "value": [1],
+              "value": 1,
               "max": 1,
               "min": 0
             }
@@ -251,7 +302,12 @@
         "equipped": false,
         "steamjack": {
           "value": false,
-          "type": ""
+          "type": "",
+          "types": {
+            "light": "Light Only",
+            "heavy": "Heavy Only",
+            "both": "Any"
+          }
         }
       },
       "spell": {
@@ -311,7 +367,8 @@
           "value": 0,
           "max": 0
         },
-        "equipped": false
+        "equipped": false,
+        "mechanika": false
       },
       "benefit": {
         "parent_arch": ""
@@ -525,6 +582,132 @@
             "cost": 300,
             "points": 2,
             "effect": "This is a runeplate specially designed to enable a warcaster to bond with a mechanikal weapon. While a weapon the warcaster is bonded to has power, the warcaster can boost attack and damage rolls with the weapon."
+          },
+          "cold": {
+            "label": "Cold",
+            "type": "Melee Weapon",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the weapon has power, it gains +1 POW. On a critical hit, a target without Immunity: Cold becomes stationary for one round."
+          },
+          "compensator": {
+            "label": "Compensator",
+            "type": "Armor",
+            "cost": 150,
+            "points": 1,
+            "effect": "While the armor has power, reduce the DEF penalty of the armor by 1."
+          },
+          "corruption": {
+            "label": "Corruption",
+            "type": "Melee or Ranged Weapon",
+            "cost": 150,
+            "points": 1,
+            "effect": "While the weapon has power, characters it hits suffer the Corrosion continuous effect."
+          },
+          "disbinder": {
+            "label": "Disbinder",
+            "type": "Melee Weapon",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the weapon has power, upkeep spells on characters it hits immediately expire."
+          },
+          "electrocutioner": {
+            "label": "Electrocutioner",
+            "type": "Melee Weapon",
+            "cost": 450,
+            "points": 3,
+            "effect": "While the weapon has power, it gains +1 POW and steamjacks it hits suffer Disruption. (A steamjack suffering Disruption loses its focus points and cannot be allocated focus or channel spells for one round)"
+          },
+          "flame": {
+            "label": "Flame",
+            "type": "Melee Weapon",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the weapon has power, it gains +1 POW. On a critical hit, the target suffers the Fire continuous effect."
+          },
+          "fleet": {
+            "label": "Fleet",
+            "type": "Armor",
+            "cost": 450,
+            "points": 3,
+            "effect": "While the armor has power, the character wearing it gains +1 SPD and DEF."
+          },
+          "grevious wounds": {
+            "label": "Grevious Wounds",
+            "type": "Melee Weapon",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the weapon has power, characters it hits lose Tough, cannot heal or be healed, and cannot transfer damage for one round."
+          },
+          "halo of fire": {
+            "label": "Halo of Fire",
+            "type": "Armor or Melee Weapon (Shield)",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the armor or shield has power, the character carrying the shield or wearing the armor gains Immunity: Fire. While the runeplate is active, the character can make a quick action to unleash a burning field around himself. For one round, any character hitting him with a melee attack suffers the Fire continuous effect. If this runeplate is set into a shield, only attackers in the character’s front arc suffer the damage roll and continuous effect."
+          },
+          "heightened strength": {
+            "label": "Heightened Strength",
+            "type": "Armor",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the armor has power, the character wearing it gains +1 STR."
+          },
+          "light": {
+            "label": "Light",
+            "type": "Melee Weapon, Ranged Weapon, or Armor",
+            "cost": 150,
+            "points": 1,
+            "effect": "While the item has power, it can provide light (p. 225) in a large area around the character carrying the weapon or wearing the armor. The light can be turned on or off as a quick action."
+          },
+          "mechanikal seizure": {
+            "label": "Mechanikal Seizure",
+            "type": "Melee Weapon",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the weapon has power, steamjacks it hits become stationary for one round."
+          },
+          "quicken": {
+            "label": "Quicken",
+            "type": "Armor",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the armor has power, once per turn the character wearing it can immediately advance up to twelve feet (2˝) as a quick action."
+          },
+          "repulsor": {
+            "label": "Repulsor",
+            "type": "Melee Weapon (Shield)",
+            "cost": 300,
+            "points": 2,
+            "effect": "While the shield has power, a character hit by it is pushed 1˝ directly away from the attacker. While the shield has power, when the character wielding the shield is hit with a melee attack made by a character in his front arc, after the attack is resolved the attacker is pushed 1˝ directly away from him."
+          },
+          "silencer": {
+            "label": "Silencer",
+            "type": "Ranged Weapon (Firearm)",
+            "cost": 150,
+            "points": 1,
+            "effect": "While the weapon has power, attacks made with the weapon make no sound."
+          },
+          "spell ward": {
+            "label": "Spell Ward",
+            "type": "Armor",
+            "cost": 450,
+            "points": 3,
+            "effect": "While the armor has power, the character wearing it cannot be targeted by spells."
+          },
+          "stall": {
+            "label": "Stall",
+            "type": "Melee Weapon",
+            "cost": 450,
+            "points": 3,
+            "effect": "While the weapon has power, it gains +1 POW. Steamjacks hit by this weapon suffer the Stall continuous effect. (While a steamjack is suffering Stall, its base DEF becomes 7 and it cannot run or charge.)"
+          },
+          "steady": {
+            "label": "Steady",
+            "type": "Armor",
+            "cost": 150,
+            "points": 1,
+            "effect": "While the armor has power, the character wearing it cannot be knocked down."
           }
         }
       },
