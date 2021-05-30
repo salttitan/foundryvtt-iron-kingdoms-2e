@@ -2,9 +2,9 @@
   "name": "ikrpg2e",
   "title": "IKRPG 2e",
   "description": "The IKRPG 2e system for FoundryVTT! Based on the Iron Kingdoms: Full Metal Fantasy by Privateer Press. ",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.7.9",
+  "compatibleCoreVersion": "0.7.",
   "templateVersion": 2,
   "author": "Salt Titan",
   "esmodules": ["module/ikrpg2e.js"],
@@ -23,7 +23,7 @@
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
   "url": "",
-  "manifest": "",
-  "download": "",
+  "manifest": "https://github.com/salttitan/foundryvtt-iron-kingdoms-2e/system.json",
+  "download": "https://github.com/salttitan/foundryvtt-iron-kingdoms-2e/archive/refs/tags/0.0.2.zip",
   "license": "LICENSE.txt"
 }
