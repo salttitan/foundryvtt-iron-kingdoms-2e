@@ -110,7 +110,7 @@ export class ikrpgActorSheet extends ActorSheet {
       i.img = i.img || DEFAULT_TOKEN;
       if (i.type === 'item') {
         gear.push(i);
-        console.log(gear);
+        // console.log(gear);
       }
 
       if (i.type === 'ranged weapon') {
@@ -230,6 +230,12 @@ export class ikrpgActorSheet extends ActorSheet {
 
     // Magic Resource Reset
     html.find('.reset-magic').click(this._resetMagic(this));
+
+    // Add health
+    html.find('.add-health').click(this._addHealth(this));
+
+    // Add health
+    html.find('.rm-health').click(this._removeHealth(this));
   }
 
   /* -------------------------------------------- */
@@ -240,6 +246,7 @@ export class ikrpgActorSheet extends ActorSheet {
    * @private
    */
   _onItemCreate(event) {
+    console.log("item created");
     event.preventDefault();
     const header = event.currentTarget;
     // Get the type of item to create.
@@ -284,6 +291,7 @@ export class ikrpgActorSheet extends ActorSheet {
   }
 
   _resetMagic(data) {
+    console.log("reset magic");
     // console.log(data);
     // const actorData = sheetData.actor;
     // const arc = actorData.stats.secondary.arc.value;
@@ -297,5 +305,15 @@ export class ikrpgActorSheet extends ActorSheet {
     //     actorData.magic.tradition.resource.value = 0
     //   }
     // } 
+  }
+
+  _addHealth(data) {
+    console.log("add");
+    console.log(data);
+  }
+
+  _removeHealth(data) {
+    console.log("remove");
+    console.log(data);
   }
 }

@@ -117,6 +117,16 @@
                 <li class="item flexrow item-header">
                   <div class="item-image"></div>
                   <div class="item-name">Skills</div>
+                  <table class="item-table" style="width: max-content">
+                    <tr>
+                      <td>
+                        Parent
+                      </td>
+                      <td>
+                        Value
+                      </td>
+                    </tr>
+                  </table>
                   <div class="item-controls">
                     <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
                   </div>
@@ -125,8 +135,18 @@
                 <li class="item flexrow" data-item-id="{{skill._id}}">
                     <div class="item-image"><img src="{{skill.img}}" title="{{skill.name}}" width="24" height="24"/></div>
                     <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{skill.name}}</a></h4>
-                    <h4 class="resource-label">{{skill.parent}}</h4>
-                    <h4 class="resource-label">{{skill.value}}</h4>
+                    <div>
+                      <table class="spell-table" style="height:max-content; margin:0">
+                        <tr>
+                            <td>
+                              {{data.parent}}
+                            </td>
+                            <td>
+                              {{data.value}}
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
                     <div class="item-controls">
                         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                     </div>
@@ -406,7 +426,7 @@
                   </table>
                   </div>
                   <div class="item-controls">
-                      <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                      <a class="item-control item-edit" title="Edit Item" ><i class="fas fa-edit"></i></a>
                       <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                   </div>
               </li>
@@ -416,6 +436,11 @@
 
         {{!-- Stats Tab --}}
         <div class="tab ability flexrow" data-group="primary" data-tab="stats">
+          <!-- <div class="item-controls">
+            <a class="rm-health">Minus</a>
+          </div>
+          
+          <a class="item-control add-health" title="add-col1">Plus</a> -->
           <div class="flexcol" style="height: 50%;">
             <div class="flexrow">
               <span>Column</span>

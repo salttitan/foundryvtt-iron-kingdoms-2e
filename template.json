@@ -244,6 +244,11 @@
       "templates": ["base", "steamjack", "character"],
       "biography": "",
       "attributes": {}
+    },
+    "grunt": {
+      "templates": ["base", "grunt"],
+      "biography": "",
+      "attributes": {}
     }
   },
   "Item": {
