@@ -11,7 +11,7 @@ export class ikrpgActorSheet extends ActorSheet {
       template: "systems/ikrpg2e/templates/actor/actor-sheet.html",
       width: 600,
       height: 650,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "card" }]
     });
   }
 

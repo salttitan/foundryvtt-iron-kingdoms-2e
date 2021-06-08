@@ -2,7 +2,7 @@
   "name": "ikrpg2e",
   "title": "IKRPG 2e",
   "description": "The IKRPG 2e system for FoundryVTT! Based on the Iron Kingdoms: Full Metal Fantasy by Privateer Press. ",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.",
   "templateVersion": 2,

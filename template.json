@@ -98,7 +98,7 @@
             "four": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false },
             "five": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false },
             "six": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false },
-            "bonus": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false }
+            "bonus": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false, "seven": false, "eight": false, "nine": false, "ten": false, "eleven": false, "twelve": false }
           },
           "bonus": {
             "value": 0,

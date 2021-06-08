@@ -4,28 +4,40 @@
     <header class="sheet-header">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+          <div class="flexrow">
+            <h2 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h2>
+            <div class="flexcol">
+              <span></span>
+            </div>
+          </div>
+          
+          <div class="flexrow">
+            <table id="quick-stats">
+              <tr>
+                <th>SPD</th>
+                <th>STR</th>
+                <th>DEF</th>
+                <th>ARM</th>
+                <th>WILL</th>
+                <th>CMD</th>
+                <th>INIT</th>
+                <th>ARC</th>
+              </tr>
+              <tr>
+                <td>{{data.stats.secondary.spd.value}}</td>
+                <td>{{data.stats.secondary.str.value}}</td>
+                <td>{{data.stats.derived.def.value}}</td>
+                <td>{{data.stats.derived.arm.value}}</td>
+                <td>{{data.stats.derived.will.value}}</td>
+                <td>{{data.stats.derived.cmd.value}}</td>
+                <td>{{data.stats.derived.init.value}}</td>
+                <td>{{data.stats.secondary.arc.value}}</td>
+              </tr>
+            </table>
+          </div>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number
             from 1 to 12 and will create that number of columns.  --}}
-            <div class="grid grid-4col">
-                <div class="ability flexrow flex-group-center">
-                  <label for="data.stats.derived.def.value" class="resource-label">DEF</label>
-                  <span class="ability-mod">{{numberFormat data.stats.derived.def.value decimals=0 sign=true}}</span>
-                </div>
-                <div class="ability flexrow flex-group-center">
-                  <label for="data.stats.derived.arm.value" class="resource-label">ARM</label>
-                  <span class="ability-mod">{{numberFormat data.stats.derived.arm.value decimals=0 sign=true}}</span>
-                </div>
-                <div class="ability flexrow flex-group-center">
-                  <label for="data.stats.derived.init.value" class="resource-label">INIT</label>
-                  <span class="ability-mod">{{numberFormat data.stats.derived.init.value decimals=0 sign=true}}</span>
-                </div>
-                <div class="ability flexrow flex-group-center">
-                  <label for="data.stats.derived.cmd.value" class="resource-label">CMD</label>
-                  <span class="ability-mod">{{numberFormat data.stats.derived.cmd.value decimals=0 sign=true}}</span>
-                </div>              
-            </div>
           
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -36,16 +48,280 @@
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">Description</a>
-        <a class="item" data-tab="skills">Skills/Abilities</a>
+        <a class="item" data-tab="card">Combat</a>
         <a class="item" data-tab="stats">Stats</a>
-        <a class="item" data-tab="weapons">Combat</a>
+        <a class="item" data-tab="description">Description</a>
+        <a class="item" data-tab="weapons">Weapons</a>
         <a class="item" data-tab="spells">Spells</a>
         <a class="item" data-tab="items">Items</a>
     </nav>
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
+
+        {{!-- Stat Card Tab --}}
+        <div class="tab card" data-group="primary" data-tab="card">
+          <div class="flexrow">
+            <div class="flexcol" style="height: 50%; flex: 0 0 33%;">
+              <span>Health</span>
+              <table>
+                <tr>
+                  <td id="col-num">1</td>
+                  <td id="col-num">2</td>
+                  <td id="col-num">3</td>
+                  <td id="col-num">4</td>
+                  <td id="col-num">5</td>
+                  <td id="col-num">6</td>
+                </tr>
+                <tr>
+                  <td id="phy-box" >
+                    <input type="checkbox" name="data.health.current.one.six" value="data.health.current.one.six" {{checked data.health.current.one.six}}>
+                  </td>
+                  <td id="phy-box" >
+                    <input type="checkbox" name="data.health.current.two.six" value="data.health.current.two.six" {{checked data.health.current.two.six}}>
+                  </td>
+                  <td id="agl-box">
+                    <input type="checkbox" name="data.health.current.three.six" value="data.health.current.three.six" {{checked data.health.current.three.six}}>
+                  </td>
+                  <td id="agl-box">
+                    <input type="checkbox" name="data.health.current.four.six" value="data.health.current.four.six" {{checked data.health.current.four.six}}>
+                  </td>
+                  <td id="int-box">
+                    <input type="checkbox" name="data.health.current.five.six" value="data.health.current.five.six" {{checked data.health.current.five.six}}>
+                  </td>
+                  <td id="int-box">
+                    <input type="checkbox" name="data.health.current.six.six" value="data.health.current.six.six" {{checked data.health.current.six.six}}>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="phy-box" >
+                    <input type="checkbox" name="data.health.current.one.five" value="data.health.current.one.five" {{checked data.health.current.one.five}}>
+                  </td>
+                  <td id="phy-box" >
+                    <input type="checkbox" name="data.health.current.two.five" value="data.health.current.two.five" {{checked data.health.current.two.five}}>
+                  </td>
+                  <td id="agl-box">
+                    <input type="checkbox" name="data.health.current.three.five" value="data.health.current.three.five" {{checked data.health.current.three.five}}>
+                  </td>
+                  <td id="agl-box">
+                    <input type="checkbox" name="data.health.current.four.five" value="data.health.current.four.five" {{checked data.health.current.four.five}}>
+                  </td>
+                  <td id="int-box">
+                    <input type="checkbox" name="data.health.current.five.five" value="data.health.current.five.five" {{checked data.health.current.five.five}}>
+                  </td>
+                  <td id="int-box">
+                    <input type="checkbox" name="data.health.current.six.five" value="data.health.current.six.five" {{checked data.health.current.six.five}}>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="phy-box" >
+                    <input type="checkbox" name="data.health.current.one.four" value="data.health.current.one.four" {{checked data.health.current.one.four}}>
+                  </td>
+                  <td id="phy-box" >
+                    <input type="checkbox" name="data.health.current.two.four" value="data.health.current.two.four" {{checked data.health.current.two.four}}>
+                  </td>
+                  <td id="agl-box">
+                    <input type="checkbox" name="data.health.current.three.four" value="data.health.current.three.four" {{checked data.health.current.three.four}}>
+                  </td>
+                  <td id="agl-box">
+                    <input type="checkbox" name="data.health.current.four.four" value="data.health.current.four.four" {{checked data.health.current.four.four}}>
+                  </td>
+                  <td id="int-box">
+                    <input type="checkbox" name="data.health.current.five.four" value="data.health.current.five.four" {{checked data.health.current.five.four}}>
+                  </td>
+                  <td id="int-box">
+                    <input type="checkbox" name="data.health.current.six.four" value="data.health.current.six.four" {{checked data.health.current.six.four}}>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="phy-box" >
+                    <input type="checkbox" name="data.health.current.one.three" value="data.health.current.one.three" {{checked data.health.current.one.three}}>
+                  </td>
+                  <td id="phy-box" >
+                    <input type="checkbox" name="data.health.current.two.three" value="data.health.current.two.three" {{checked data.health.current.two.three}}>
+                  </td>
+                  <td id="agl-box">
+                    <input type="checkbox" name="data.health.current.three.three" value="data.health.current.three.three" {{checked data.health.current.three.three}}>
+                  </td>
+                  <td id="agl-box">
+                    <input type="checkbox" name="data.health.current.four.three" value="data.health.current.four.three" {{checked data.health.current.four.three}}>
+                  </td>
+                  <td id="int-box">
+                    <input type="checkbox" name="data.health.current.five.three" value="data.health.current.five.three" {{checked data.health.current.five.three}}>
+                  </td>
+                  <td id="int-box">
+                    <input type="checkbox" name="data.health.current.six.three" value="data.health.current.six.three" {{checked data.health.current.six.three}}>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="phy-box" colspan="2">
+                    <input type="checkbox" name="data.health.current.two.two" value="data.health.current.two.two" {{checked data.health.current.two.two}}>
+                  </td>
+                  <td id="agl-box" colspan="2">
+                    <input type="checkbox" name="data.health.current.four.two" value="data.health.current.four.two" {{checked data.health.current.four.two}}>
+                  </td>
+                  <td id="int-box" colspan="2">
+                    <input type="checkbox" name="data.health.current.six.two" value="data.health.current.six.two" {{checked data.health.current.six.two}}>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="phy-box" colspan="2">
+                    <input  type="checkbox" name="data.health.current.two.one" value="data.health.current.two.one" {{checked data.health.current.two.one}}>
+                  </td>
+                  <td id="agl-box" colspan="2">
+                    <input type="checkbox" name="data.health.current.four.one" value="data.health.current.four.one" {{checked data.health.current.four.one}}>
+                  </td>
+                  <td id="int-box" colspan="2">
+                    <input type="checkbox" name="data.health.current.six.one" value="data.health.current.six.one" {{checked data.health.current.six.one}}>
+                  </td>
+                </tr>
+                <tr>
+                  <th id="phy-box" colspan="2">PHY</th>
+                  <th id="agl-box" colspan="2">AGL</th>
+                  <th id="int-box" colspan="2">INT</th>
+                </tr>
+              </table>
+              <span>Power Field / Armor</span>
+              <table>
+                <tr>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.one" value="data.health.current.bonus.one" {{checked data.health.current.bonus.one}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.two" value="data.health.current.bonus.two" {{checked data.health.current.bonus.two}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.three" value="data.health.current.bonus.three" {{checked data.health.current.bonus.three}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.four" value="data.health.current.bonus.four" {{checked data.health.current.bonus.four}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.five" value="data.health.current.bonus.five" {{checked data.health.current.bonus.five}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.six" value="data.health.current.bonus.six" {{checked data.health.current.bonus.six}}>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.seven" value="data.health.current.bonus.seven" {{checked data.health.current.bonus.seven}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.eight" value="data.health.current.bonus.eight" {{checked data.health.current.bonus.eight}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.nine" value="data.health.current.bonus.nine" {{checked data.health.current.bonus.nine}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.ten" value="data.health.current.bonus.ten" {{checked data.health.current.bonus.ten}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.eleven" value="data.health.current.bonus.eleven" {{checked data.health.current.bonus.eleven}}>
+                  </td>
+                  <td id="bonus-box">
+                    <input type="checkbox" name="data.health.current.bonus.twelve" value="data.health.current.bonus.twelve" {{checked data.health.current.bonus.twelve}}>
+                  </td>
+                </tr>
+              </table>  
+            </div>
+            <div class="flexcol" style="height: 50%; flex: 0 0 66%;">
+              <ol class="items-list">
+                <li class="item flexrow item-header" style="height: 40px;">
+                  <div class="item-image"></div>
+                  <div class="item-name">Melee Weapons</div>
+                  <table class="item-table">
+                    <tr>
+                      <th class="resource-label">
+                          RNG
+                      </th>
+                      <th class="resource-label">
+                          MAT
+                      </th>
+                      <th class="resource-label">
+                          POW
+                      </th>
+                      <th class="resource-label">
+                          P+S
+                      </th>
+                  </tr>
+                  </table>
+                </li>
+                {{#each actor.meleeWeapons as |sword id|}}
+                <li class="item flexrow" data-item-id="{{sword._id}}" style="height: 40px;">
+                    <div class="item-image"><img src="{{sword.img}}" title="{{sword.name}}" width="24" height="24"/></div>
+                    <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{sword.name}}</a></h4>
+                    <div>
+                      <table class="spell-table" style="height:max-content; margin:0">
+                        <tr>
+                            <td>
+                              {{sword.data.rng.value}}
+                            </td>
+                            <td>
+                              {{sword.data.mat.value}}
+                            </td>
+                            <td>
+                              {{sword.data.pow.value}}
+                            </td>
+                            <td>
+                              {{sword.data.ps.value}}
+                            </td>
+                        </tr>
+                      </table>  
+                    </div>
+                </li>
+                {{/each}} 
+              </ol>
+              <ol class="items-list">
+                <li class="item flexrow item-header" style="height: 40px;">
+                  <div class="item-image"></div>
+                  <div class="item-name">Ranged Weapons</div>
+                  <table class="item-table">
+                    <tr>
+                      <th class="resource-label">
+                          RNG
+                      </th>
+                      <th class="resource-label">
+                          RAT
+                      </th>
+                      <th class="resource-label">
+                          AOE
+                      </th>
+                      <th class="resource-label">
+                          POW
+                      </th>
+                  </tr>
+                  </table>
+                </li>
+            {{#each actor.rangedWeapons as |gun id|}}
+                <li class="item flexrow" data-item-id="{{gun._id}}" style="height: 40px;">
+                    <div class="item-image"><img src="{{gun.img}}" title="{{gun.name}}" width="24" height="24"/></div>
+                    <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{gun.name}}</a></h4>
+                    <div>
+                      <table class="spell-table" style="height:max-content; margin:0">
+                        <tr>
+                            <td>
+                              {{gun.data.rng.value}}
+                            </td>
+                            <td>
+                              {{gun.data.rat.value}}
+                            </td>
+                            <td>
+                              {{gun.data.aoe.value}}
+                            </td>
+                            <td>
+                              {{gun.data.pow.value}}
+                            </td>
+                        </tr>
+                      </table>                      
+                    </div>
+                </li>
+            {{/each}}
+            </ol>
+            </div>
+          </div>
+          
+        </div>
 
         {{!-- Biography Tab --}}
         <div class="tab biography" data-group="primary" data-tab="description">
@@ -85,6 +361,64 @@
             </li>
             {{/each}}
           </ol>
+          <ol class="items-list">
+            <li class="item flexrow item-header">
+              <div class="item-image"></div>
+              <div class="item-name">Skills</div>
+              <table class="item-table" style="width: max-content">
+                <tr>
+                  <td>
+                    Parent
+                  </td>
+                  <td>
+                    Value
+                  </td>
+                </tr>
+              </table>
+              <div class="item-controls">
+                <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
+              </div>
+            </li>
+        {{#each actor.skills as |skill id|}}
+            <li class="item flexrow" data-item-id="{{skill._id}}">
+                <div class="item-image"><img src="{{skill.img}}" title="{{skill.name}}" width="24" height="24"/></div>
+                <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{skill.name}}</a></h4>
+                <div>
+                  <table class="spell-table" style="height:max-content; margin:0">
+                    <tr>
+                        <td>
+                          {{data.parent}}
+                        </td>
+                        <td>
+                          {{data.value}}
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                <div class="item-controls">
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </div>
+            </li>
+        {{/each}}
+        </ol>
+        <ol class="items-list">
+          <li class="item flexrow item-header">
+            <div class="item-image"></div>
+            <div class="item-name">Abilities</div>
+            <div class="item-controls">
+              <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
+            </div>
+          </li>
+      {{#each actor.abilities as |ability id|}}
+          <li class="item flexrow" data-item-id="{{ability._id}}">
+              <div class="item-image"><img src="{{ability.img}}" title="{{ability.name}}" width="24" height="24"/></div>
+              <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{ability.name}}</a></h4>
+              <div class="item-controls">
+                  <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+              </div>
+          </li>
+      {{/each}}
+      </ol>
             <h3>Biography & Notes</h3>
             {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
@@ -109,68 +443,6 @@
                 </li>
             {{/each}}
             </ol>
-        </div>
-
-        {{!-- Skills and Abilities Tab --}}
-        <div class="tab items" data-group="primary" data-tab="skills">
-            <ol class="items-list">
-                <li class="item flexrow item-header">
-                  <div class="item-image"></div>
-                  <div class="item-name">Skills</div>
-                  <table class="item-table" style="width: max-content">
-                    <tr>
-                      <td>
-                        Parent
-                      </td>
-                      <td>
-                        Value
-                      </td>
-                    </tr>
-                  </table>
-                  <div class="item-controls">
-                    <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
-                  </div>
-                </li>
-            {{#each actor.skills as |skill id|}}
-                <li class="item flexrow" data-item-id="{{skill._id}}">
-                    <div class="item-image"><img src="{{skill.img}}" title="{{skill.name}}" width="24" height="24"/></div>
-                    <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{skill.name}}</a></h4>
-                    <div>
-                      <table class="spell-table" style="height:max-content; margin:0">
-                        <tr>
-                            <td>
-                              {{data.parent}}
-                            </td>
-                            <td>
-                              {{data.value}}
-                            </td>
-                        </tr>
-                    </table>
-                    </div>
-                    <div class="item-controls">
-                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-            {{/each}}
-            </ol>
-            <ol class="items-list">
-              <li class="item flexrow item-header">
-                <div class="item-image"></div>
-                <div class="item-name">Abilities</div>
-                <div class="item-controls">
-                  <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
-                </div>
-              </li>
-          {{#each actor.abilities as |ability id|}}
-              <li class="item flexrow" data-item-id="{{ability._id}}">
-                  <div class="item-image"><img src="{{ability.img}}" title="{{ability.name}}" width="24" height="24"/></div>
-                  <h4 class="item-name"><a class="item-control item-edit" title="Edit Item">{{ability.name}}</a></h4>
-                  <div class="item-controls">
-                      <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                  </div>
-              </li>
-          {{/each}}
-          </ol>
         </div>
 
         {{!-- Spells Tab --}}
@@ -267,6 +539,7 @@
 
         {{!-- Weapons Tab --}}
         <div class="tab items" data-group="primary" data-tab="weapons">
+          
             <ol class="items-list">
                 <li class="item flexrow item-header" style="height: 40px;">
                   <div class="item-image"></div>
@@ -371,7 +644,7 @@
                       <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                   </div>
               </li>
-              {{/each}}
+              {{/each}} 
             </ol>
             <ol class="items-list">
               <li class="item flexrow item-header" style="height: 40px;">
@@ -436,149 +709,7 @@
 
         {{!-- Stats Tab --}}
         <div class="tab ability flexrow" data-group="primary" data-tab="stats">
-          <div class="flexcol" style="height: 50%;">
-            <span>Health</span>
-            <table>
-              <tr>
-                <td id="col-num">1</td>
-                <td id="col-num">2</td>
-                <td id="col-num">3</td>
-                <td id="col-num">4</td>
-                <td id="col-num">5</td>
-                <td id="col-num">6</td>
-              </tr>
-              <tr>
-                <td id="phy-box" >
-                  <input type="checkbox" name="data.health.current.one.six" value="data.health.current.one.six" {{checked data.health.current.one.six}}>
-                </td>
-                <td id="phy-box" >
-                  <input type="checkbox" name="data.health.current.two.six" value="data.health.current.two.six" {{checked data.health.current.two.six}}>
-                </td>
-                <td id="agl-box">
-                  <input type="checkbox" name="data.health.current.three.six" value="data.health.current.three.six" {{checked data.health.current.three.six}}>
-                </td>
-                <td id="agl-box">
-                  <input type="checkbox" name="data.health.current.four.six" value="data.health.current.four.six" {{checked data.health.current.four.six}}>
-                </td>
-                <td id="int-box">
-                  <input type="checkbox" name="data.health.current.five.six" value="data.health.current.five.six" {{checked data.health.current.five.six}}>
-                </td>
-                <td id="int-box">
-                  <input type="checkbox" name="data.health.current.six.six" value="data.health.current.six.six" {{checked data.health.current.six.six}}>
-                </td>
-              </tr>
-              <tr>
-                <td id="phy-box" >
-                  <input type="checkbox" name="data.health.current.one.five" value="data.health.current.one.five" {{checked data.health.current.one.five}}>
-                </td>
-                <td id="phy-box" >
-                  <input type="checkbox" name="data.health.current.two.five" value="data.health.current.two.five" {{checked data.health.current.two.five}}>
-                </td>
-                <td id="agl-box">
-                  <input type="checkbox" name="data.health.current.three.five" value="data.health.current.three.five" {{checked data.health.current.three.five}}>
-                </td>
-                <td id="agl-box">
-                  <input type="checkbox" name="data.health.current.four.five" value="data.health.current.four.five" {{checked data.health.current.four.five}}>
-                </td>
-                <td id="int-box">
-                  <input type="checkbox" name="data.health.current.five.five" value="data.health.current.five.five" {{checked data.health.current.five.five}}>
-                </td>
-                <td id="int-box">
-                  <input type="checkbox" name="data.health.current.six.five" value="data.health.current.six.five" {{checked data.health.current.six.five}}>
-                </td>
-              </tr>
-              <tr>
-                <td id="phy-box" >
-                  <input type="checkbox" name="data.health.current.one.four" value="data.health.current.one.four" {{checked data.health.current.one.four}}>
-                </td>
-                <td id="phy-box" >
-                  <input type="checkbox" name="data.health.current.two.four" value="data.health.current.two.four" {{checked data.health.current.two.four}}>
-                </td>
-                <td id="agl-box">
-                  <input type="checkbox" name="data.health.current.three.four" value="data.health.current.three.four" {{checked data.health.current.three.four}}>
-                </td>
-                <td id="agl-box">
-                  <input type="checkbox" name="data.health.current.four.four" value="data.health.current.four.four" {{checked data.health.current.four.four}}>
-                </td>
-                <td id="int-box">
-                  <input type="checkbox" name="data.health.current.five.four" value="data.health.current.five.four" {{checked data.health.current.five.four}}>
-                </td>
-                <td id="int-box">
-                  <input type="checkbox" name="data.health.current.six.four" value="data.health.current.six.four" {{checked data.health.current.six.four}}>
-                </td>
-              </tr>
-              <tr>
-                <td id="phy-box" >
-                  <input type="checkbox" name="data.health.current.one.three" value="data.health.current.one.three" {{checked data.health.current.one.three}}>
-                </td>
-                <td id="phy-box" >
-                  <input type="checkbox" name="data.health.current.two.three" value="data.health.current.two.three" {{checked data.health.current.two.three}}>
-                </td>
-                <td id="agl-box">
-                  <input type="checkbox" name="data.health.current.three.three" value="data.health.current.three.three" {{checked data.health.current.three.three}}>
-                </td>
-                <td id="agl-box">
-                  <input type="checkbox" name="data.health.current.four.three" value="data.health.current.four.three" {{checked data.health.current.four.three}}>
-                </td>
-                <td id="int-box">
-                  <input type="checkbox" name="data.health.current.five.three" value="data.health.current.five.three" {{checked data.health.current.five.three}}>
-                </td>
-                <td id="int-box">
-                  <input type="checkbox" name="data.health.current.six.three" value="data.health.current.six.three" {{checked data.health.current.six.three}}>
-                </td>
-              </tr>
-              <tr>
-                <td id="phy-box" colspan="2">
-                  <input type="checkbox" name="data.health.current.two.two" value="data.health.current.two.two" {{checked data.health.current.two.two}}>
-                </td>
-                <td id="agl-box" colspan="2">
-                  <input type="checkbox" name="data.health.current.four.two" value="data.health.current.four.two" {{checked data.health.current.four.two}}>
-                </td>
-                <td id="int-box" colspan="2">
-                  <input type="checkbox" name="data.health.current.six.two" value="data.health.current.six.two" {{checked data.health.current.six.two}}>
-                </td>
-              </tr>
-              <tr>
-                <td id="phy-box" colspan="2">
-                  <input  type="checkbox" name="data.health.current.two.one" value="data.health.current.two.one" {{checked data.health.current.two.one}}>
-                </td>
-                <td id="agl-box" colspan="2">
-                  <input type="checkbox" name="data.health.current.four.one" value="data.health.current.four.one" {{checked data.health.current.four.one}}>
-                </td>
-                <td id="int-box" colspan="2">
-                  <input type="checkbox" name="data.health.current.six.one" value="data.health.current.six.one" {{checked data.health.current.six.one}}>
-                </td>
-              </tr>
-              <tr>
-                <th id="phy-box" colspan="2">PHY</th>
-                <th id="agl-box" colspan="2">AGL</th>
-                <th id="int-box" colspan="2">INT</th>
-              </tr>
-            </table>
-            <span>Power Field / Armor</span>
-            <table>
-              <tr>
-                <td id="bonus-box">
-                  <input type="checkbox" name="data.health.current.bonus.one" value="data.health.current.bonus.one" {{checked data.health.current.bonus.one}}>
-                </td>
-                <td id="bonus-box">
-                  <input type="checkbox" name="data.health.current.bonus.two" value="data.health.current.bonus.two" {{checked data.health.current.bonus.two}}>
-                </td>
-                <td id="bonus-box">
-                  <input type="checkbox" name="data.health.current.bonus.three" value="data.health.current.bonus.three" {{checked data.health.current.bonus.three}}>
-                </td>
-                <td id="bonus-box">
-                  <input type="checkbox" name="data.health.current.bonus.four" value="data.health.current.bonus.four" {{checked data.health.current.bonus.four}}>
-                </td>
-                <td id="bonus-box">
-                  <input type="checkbox" name="data.health.current.bonus.five" value="data.health.current.bonus.five" {{checked data.health.current.bonus.five}}>
-                </td>
-                <td id="bonus-box">
-                  <input type="checkbox" name="data.health.current.bonus.six" value="data.health.current.bonus.six" {{checked data.health.current.bonus.six}}>
-                </td>
-              </tr>
-            </table>  
-          </div>
+          
             <ul class="stats flexcol" style="height: 50%">
               {{#each data.stats.primary as |primary key|}}
                 <li class="ability flexrow flex-group-left" style="margin-bottom: 40px; height: 60px;">
