@@ -227,15 +227,6 @@ export class ikrpgActorSheet extends ActorSheet {
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this));
-
-    // Magic Resource Reset
-    html.find('.reset-magic').click(this._resetMagic(this));
-
-    // Add health
-    html.find('.add-health').click(this._addHealth(this));
-
-    // Add health
-    html.find('.rm-health').click(this._removeHealth(this));
   }
 
   /* -------------------------------------------- */

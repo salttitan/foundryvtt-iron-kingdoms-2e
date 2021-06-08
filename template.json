@@ -91,6 +91,14 @@
             "five": [false, false, false, false, false, false, false, false, false, false ],
             "six": [false, false, false, false, false, false, false, false, false, false ]
           },
+          "current": {
+            "one": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false },
+            "two": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false },
+            "three": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false },
+            "four": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false },
+            "five": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false },
+            "six": {"one": false, "two": false, "three": false, "four": false, "five": false, "six": false }
+          },
           "bonus": {
             "value": 0,
             "max": 0

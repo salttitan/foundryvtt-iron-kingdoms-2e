@@ -52,57 +52,58 @@ export class ikrpgActor extends Actor {
     let three = primary.agl.value - four;
     let five = primary.int.value - six;
 
-    // // Create grid array
+    // Create grid array
     
-    // let columnOne = health.grid.one;
-    // for (let i = 0; i < columnOne.length; i++) {
+    let columnOne = health.grid.one;
+    for (let i = 0; i < columnOne.length; i++) {
       
-    //   if (one > i) {
-    //     columnOne[i] = true;
-    //   }
-    // }
+      if (one > i) {
+        columnOne[i] = true;
+      }
+    }
 
-    // let columnTwo = health.grid.two;
-    // for (let i = 0; i < columnTwo.length; i++) {
+    let columnTwo = health.grid.two;
+    for (let i = 0; i < columnTwo.length; i++) {
       
-    //   if (two > i) {
-    //     columnTwo[i] = true;
-    //   }
-    // }
+      if (two > i) {
+        columnTwo[i] = true;
+      }
+    }
   
-    // let columnThree = health.grid.three;
-    // for (let i = 0; i < columnThree.length; i++) {
+    let columnThree = health.grid.three;
+    for (let i = 0; i < columnThree.length; i++) {
       
-    //   if (three > i) {
-    //     columnThree[i] = true;
-    //   }
-    // }
+      if (three > i) {
+        columnThree[i] = true;
+      }
+    }
 
-    // let columnFour = health.grid.four;
-    // for (let i = 0; i < columnFour.length; i++) {
+    let columnFour = health.grid.four;
+    for (let i = 0; i < columnFour.length; i++) {
       
-    //   if (four > i) {
-    //     columnFour[i] = true;
-    //   }
-    // }
+      if (four > i) {
+        columnFour[i] = true;
+      }
+    }
 
-    // let columnFive = health.grid.five;
-    // for (let i = 0; i < columnFive.length; i++) {
+    let columnFive = health.grid.five;
+    for (let i = 0; i < columnFive.length; i++) {
       
-    //   if (five > i) {
-    //     columnFive[i] = true;
-    //   }
-    // }
+      if (five > i) {
+        columnFive[i] = true;
+      }
+    }
 
-    // let columnSix = health.grid.six;
-    // for (let i = 0; i < columnSix.length; i++) {
+    let columnSix = health.grid.six;
+    for (let i = 0; i < columnSix.length; i++) {
       
-    //   if (four > i) {
-    //     columnSix[i] = true;
-    //   }
-    // }
+      if (four > i) {
+        columnSix[i] = true;
+      }
+    }
     
-    // console.log(health.grid);
+    console.log(health.grid);
+    
 
     // Set max values - not sure if I still need this
     health.column.one.max = one;
@@ -117,15 +118,13 @@ export class ikrpgActor extends Actor {
     const tradition = data.magic.tradition;
     const traditions = data.magic.traditions;
 
-    console.log(data.magic.tradition);
-
     tradition.resource.label = traditions[selectedTradition].resource.label;
-    if(tradition.label === "focuser") {
-      console.log("Focuser");
+    if (tradition.label === "focuser") {
       tradition.resource.max = secondary.arc.value;
     } else if (tradition.label === "will_weaver") {
-      console.log("Focuser");
       tradition.resource.max = (secondary.arc.value * 2);
+    } else if (tradition.label === "none") {
+      tradition.resource.max = 0;
     }
   }
 

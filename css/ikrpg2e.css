@@ -367,3 +367,19 @@
   filter: brightness(0.8);
   opacity: 0.9;
 }
+
+#str-box {
+  background-color: #005b7f;
+}
+
+#agl-box {
+  background-color: #881b1e;
+}
+
+#int-box {
+  background-color: #134d11;
+}
+
+#col-num {
+  text-align: center;
+}

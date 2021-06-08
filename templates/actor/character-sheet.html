@@ -42,6 +42,7 @@
         <a class="item" data-tab="weapons">Combat</a>
         <a class="item" data-tab="spells">Spells</a>
         <a class="item" data-tab="items">Items</a>
+        <a class="item" data-tab="health">Health</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -433,16 +434,159 @@
           {{/each}}
           </ol>
         </div>
+        {{!-- Health Tab --}}
+        <div class="tab ability flexrow" data-group="primary" data-tab="health">
+          <table>
+            {{#each data.health.grid.one}}
+              {{#if this}}
+            <tr>
+              <td>
+                <input type="checkbox" name="data.health.current.one.[@index]" value="data.health.grid.one.[@index]" {{checked data.health.grid.one.[@index]}}>
+                {{@index}}
+              </td>
+            </tr>
+            {{/if}}
+            {{/each}}
+            
+          </table>
+         
+          
+        </div>
 
         {{!-- Stats Tab --}}
         <div class="tab ability flexrow" data-group="primary" data-tab="stats">
-          <!-- <div class="item-controls">
-            <a class="rm-health">Minus</a>
-          </div>
-          
-          <a class="item-control add-health" title="add-col1">Plus</a> -->
           <div class="flexcol" style="height: 50%;">
-            <div class="flexrow">
+            <table>
+              <tr>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.one.six" value="data.health.current.one.six" {{checked data.health.current.one.six}}>
+                </td>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.two.six" value="data.health.current.two.six" {{checked data.health.current.two.six}}>
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.three.six" value="data.health.current.three.six" {{checked data.health.current.three.six}}>
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.four.six" value="data.health.current.four.six" {{checked data.health.current.four.six}}>
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.five.six" value="data.health.current.five.six" {{checked data.health.current.five.six}}>
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.six.six" value="data.health.current.six.six" {{checked data.health.current.six.six}}>
+                </td>
+              </tr>
+              <tr>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.one.five" value="data.health.current.one.five" {{checked data.health.current.one.five}}>
+                </td>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.two.five" value="data.health.current.two.five" {{checked data.health.current.two.five}}>
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.three.five" value="data.health.current.three.five" {{checked data.health.current.three.five}}>
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.four.five" value="data.health.current.four.five" {{checked data.health.current.four.five}}>
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.five.five" value="data.health.current.five.five" {{checked data.health.current.five.five}}>
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.six.five" value="data.health.current.six.five" {{checked data.health.current.six.five}}>
+                </td>
+              </tr>
+              <tr>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.one.four" value="data.health.current.one.four" {{checked data.health.current.one.four}}>
+                </td>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.two.four" value="data.health.current.two.four" {{checked data.health.current.two.four}}>
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.three.four" value="data.health.current.three.four" {{checked data.health.current.three.four}}>
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.four.four" value="data.health.current.four.four" {{checked data.health.current.four.four}}>
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.five.four" value="data.health.current.five.four" {{checked data.health.current.five.four}}>
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.six.four" value="data.health.current.six.four" {{checked data.health.current.six.four}}>
+                </td>
+              </tr>
+              <tr>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.one.three" value="data.health.current.one.three" {{checked data.health.current.one.three}}>
+                </td>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.two.three" value="data.health.current.two.three" {{checked data.health.current.two.three}}>
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.three.three" value="data.health.current.three.three" {{checked data.health.current.three.three}}>
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.four.three" value="data.health.current.four.three" {{checked data.health.current.four.three}}>
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.five.three" value="data.health.current.five.three" {{checked data.health.current.five.three}}>
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.six.three" value="data.health.current.six.three" {{checked data.health.current.six.three}}>
+                </td>
+              </tr>
+              <tr>
+                <td id="str-box" >
+                  <!-- <input type="checkbox" name="data.health.current.one.two" value="data.health.current.one.two" {{checked data.health.current.one.two}}> -->
+                </td>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.two.two" value="data.health.current.two.two" {{checked data.health.current.two.two}}>
+                </td>
+                <td id="agl-box">
+                  <!-- <input type="checkbox" name="data.health.current.three.two" value="data.health.current.three.two" {{checked data.health.current.three.two}}> -->
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.four.two" value="data.health.current.four.two" {{checked data.health.current.four.two}}>
+                </td>
+                <td id="int-box">
+                  <!-- <input type="checkbox" name="data.health.current.five.two" value="data.health.current.five.two" {{checked data.health.current.five.two}}> -->
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.six.two" value="data.health.current.six.two" {{checked data.health.current.six.two}}>
+                </td>
+              </tr>
+              <tr>
+                <td id="str-box" >
+                  <!-- <input type="checkbox" name="data.health.current.one.one" value="data.health.current.one.one" {{checked data.health.current.one.one}}> -->
+                </td>
+                <td id="str-box" >
+                  <input type="checkbox" name="data.health.current.two.one" value="data.health.current.two.one" {{checked data.health.current.two.one}}>
+                </td>
+                <td id="agl-box">
+                  <!-- <input type="checkbox" name="data.health.current.three.one" value="data.health.current.three.one" {{checked data.health.current.three.one}}> -->
+                </td>
+                <td id="agl-box">
+                  <input type="checkbox" name="data.health.current.four.one" value="data.health.current.four.one" {{checked data.health.current.four.one}}>
+                </td>
+                <td id="int-box">
+                  <!-- <input type="checkbox" name="data.health.current.five.one" value="data.health.current.five.one" {{checked data.health.current.five.one}}> -->
+                </td>
+                <td id="int-box">
+                  <input type="checkbox" name="data.health.current.six.one" value="data.health.current.six.one" {{checked data.health.current.six.one}}>
+                </td>
+              </tr>
+              <tr>
+                <td id="col-num">1</td>
+                <td id="col-num">2</td>
+                <td id="col-num">3</td>
+                <td id="col-num">4</td>
+                <td id="col-num">5</td>
+                <td id="col-num">6</td>
+              </tr>
+            </table>
+            <!-- <div class="flexrow">
               <span>Column</span>
               <span style="text-align: right;">Max</span>
             </div>
@@ -627,7 +771,7 @@
               <label for="health-{{actor._id}}-bonus-9"></label>
               {{/multiboxes}}
               <span>{{data.health.bonus.max}}</span>
-            </div>
+            </div> -->
           </div>
             <ul class="stats flexcol" style="height: 50%">
               {{#each data.stats.primary as |primary key|}}
