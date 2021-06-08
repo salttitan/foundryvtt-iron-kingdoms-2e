@@ -42,7 +42,6 @@
         <a class="item" data-tab="weapons">Combat</a>
         <a class="item" data-tab="spells">Spells</a>
         <a class="item" data-tab="items">Items</a>
-        <a class="item" data-tab="health">Health</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -434,34 +433,25 @@
           {{/each}}
           </ol>
         </div>
-        {{!-- Health Tab --}}
-        <div class="tab ability flexrow" data-group="primary" data-tab="health">
-          <table>
-            {{#each data.health.grid.one}}
-              {{#if this}}
-            <tr>
-              <td>
-                <input type="checkbox" name="data.health.current.one.[@index]" value="data.health.grid.one.[@index]" {{checked data.health.grid.one.[@index]}}>
-                {{@index}}
-              </td>
-            </tr>
-            {{/if}}
-            {{/each}}
-            
-          </table>
-         
-          
-        </div>
 
         {{!-- Stats Tab --}}
         <div class="tab ability flexrow" data-group="primary" data-tab="stats">
           <div class="flexcol" style="height: 50%;">
+            <span>Health</span>
             <table>
               <tr>
-                <td id="str-box" >
+                <td id="col-num">1</td>
+                <td id="col-num">2</td>
+                <td id="col-num">3</td>
+                <td id="col-num">4</td>
+                <td id="col-num">5</td>
+                <td id="col-num">6</td>
+              </tr>
+              <tr>
+                <td id="phy-box" >
                   <input type="checkbox" name="data.health.current.one.six" value="data.health.current.one.six" {{checked data.health.current.one.six}}>
                 </td>
-                <td id="str-box" >
+                <td id="phy-box" >
                   <input type="checkbox" name="data.health.current.two.six" value="data.health.current.two.six" {{checked data.health.current.two.six}}>
                 </td>
                 <td id="agl-box">
@@ -478,10 +468,10 @@
                 </td>
               </tr>
               <tr>
-                <td id="str-box" >
+                <td id="phy-box" >
                   <input type="checkbox" name="data.health.current.one.five" value="data.health.current.one.five" {{checked data.health.current.one.five}}>
                 </td>
-                <td id="str-box" >
+                <td id="phy-box" >
                   <input type="checkbox" name="data.health.current.two.five" value="data.health.current.two.five" {{checked data.health.current.two.five}}>
                 </td>
                 <td id="agl-box">
@@ -498,10 +488,10 @@
                 </td>
               </tr>
               <tr>
-                <td id="str-box" >
+                <td id="phy-box" >
                   <input type="checkbox" name="data.health.current.one.four" value="data.health.current.one.four" {{checked data.health.current.one.four}}>
                 </td>
-                <td id="str-box" >
+                <td id="phy-box" >
                   <input type="checkbox" name="data.health.current.two.four" value="data.health.current.two.four" {{checked data.health.current.two.four}}>
                 </td>
                 <td id="agl-box">
@@ -518,10 +508,10 @@
                 </td>
               </tr>
               <tr>
-                <td id="str-box" >
+                <td id="phy-box" >
                   <input type="checkbox" name="data.health.current.one.three" value="data.health.current.one.three" {{checked data.health.current.one.three}}>
                 </td>
-                <td id="str-box" >
+                <td id="phy-box" >
                   <input type="checkbox" name="data.health.current.two.three" value="data.health.current.two.three" {{checked data.health.current.two.three}}>
                 </td>
                 <td id="agl-box">
@@ -538,240 +528,56 @@
                 </td>
               </tr>
               <tr>
-                <td id="str-box" >
-                  <!-- <input type="checkbox" name="data.health.current.one.two" value="data.health.current.one.two" {{checked data.health.current.one.two}}> -->
-                </td>
-                <td id="str-box" >
+                <td id="phy-box" colspan="2">
                   <input type="checkbox" name="data.health.current.two.two" value="data.health.current.two.two" {{checked data.health.current.two.two}}>
                 </td>
-                <td id="agl-box">
-                  <!-- <input type="checkbox" name="data.health.current.three.two" value="data.health.current.three.two" {{checked data.health.current.three.two}}> -->
-                </td>
-                <td id="agl-box">
+                <td id="agl-box" colspan="2">
                   <input type="checkbox" name="data.health.current.four.two" value="data.health.current.four.two" {{checked data.health.current.four.two}}>
                 </td>
-                <td id="int-box">
-                  <!-- <input type="checkbox" name="data.health.current.five.two" value="data.health.current.five.two" {{checked data.health.current.five.two}}> -->
-                </td>
-                <td id="int-box">
+                <td id="int-box" colspan="2">
                   <input type="checkbox" name="data.health.current.six.two" value="data.health.current.six.two" {{checked data.health.current.six.two}}>
                 </td>
               </tr>
               <tr>
-                <td id="str-box" >
-                  <!-- <input type="checkbox" name="data.health.current.one.one" value="data.health.current.one.one" {{checked data.health.current.one.one}}> -->
+                <td id="phy-box" colspan="2">
+                  <input  type="checkbox" name="data.health.current.two.one" value="data.health.current.two.one" {{checked data.health.current.two.one}}>
                 </td>
-                <td id="str-box" >
-                  <input type="checkbox" name="data.health.current.two.one" value="data.health.current.two.one" {{checked data.health.current.two.one}}>
-                </td>
-                <td id="agl-box">
-                  <!-- <input type="checkbox" name="data.health.current.three.one" value="data.health.current.three.one" {{checked data.health.current.three.one}}> -->
-                </td>
-                <td id="agl-box">
+                <td id="agl-box" colspan="2">
                   <input type="checkbox" name="data.health.current.four.one" value="data.health.current.four.one" {{checked data.health.current.four.one}}>
                 </td>
-                <td id="int-box">
-                  <!-- <input type="checkbox" name="data.health.current.five.one" value="data.health.current.five.one" {{checked data.health.current.five.one}}> -->
-                </td>
-                <td id="int-box">
+                <td id="int-box" colspan="2">
                   <input type="checkbox" name="data.health.current.six.one" value="data.health.current.six.one" {{checked data.health.current.six.one}}>
                 </td>
               </tr>
               <tr>
-                <td id="col-num">1</td>
-                <td id="col-num">2</td>
-                <td id="col-num">3</td>
-                <td id="col-num">4</td>
-                <td id="col-num">5</td>
-                <td id="col-num">6</td>
+                <th id="phy-box" colspan="2">PHY</th>
+                <th id="agl-box" colspan="2">AGL</th>
+                <th id="int-box" colspan="2">INT</th>
               </tr>
             </table>
-            <!-- <div class="flexrow">
-              <span>Column</span>
-              <span style="text-align: right;">Max</span>
-            </div>
-            <div class="health health1 flexrow">
-              <span>1</span>
-              <label for="health-{{actor._id}}-col1-0" class="zero-label"></label>
-              {{#multiboxes data.health.column.one.value}}
-              <input type="radio" id="health-{{actor._id}}-col1-0" name="data.health.column.one.value" value="0" checked="checked">
-              <input type="radio" id="health-{{actor._id}}-col1-1" name="data.health.column.one.value" value="1">
-              <label for="health-{{actor._id}}-col1-1"></label>
-              <input type="radio" id="health-{{actor._id}}-col1-2" name="data.health.column.one.value" value="2">
-              <label for="health-{{actor._id}}-col1-2"></label>
-              <input type="radio" id="health-{{actor._id}}-col1-3" name="data.health.column.one.value" value="3">
-              <label for="health-{{actor._id}}-col1-3"></label>
-              <input type="radio" id="health-{{actor._id}}-col1-4" name="data.health.column.one.value" value="4">
-              <label for="health-{{actor._id}}-col1-4"></label>
-              <input type="radio" id="health-{{actor._id}}-col1-5" name="data.health.column.one.value" value="5">
-              <label for="health-{{actor._id}}-col1-5"></label>
-              <input type="radio" id="health-{{actor._id}}-col1-6" name="data.health.column.one.value" value="6">
-              <label for="health-{{actor._id}}-col1-6"></label>
-              <input type="radio" id="health-{{actor._id}}-col1-7" name="data.health.column.one.value" value="7">
-              <label for="health-{{actor._id}}-col1-7"></label>
-              <input type="radio" id="health-{{actor._id}}-col1-8" name="data.health.column.one.value" value="8">
-              <label for="health-{{actor._id}}-col1-8"></label>
-              <input type="radio" id="health-{{actor._id}}-col1-9" name="data.health.column.one.value" value="9">
-              <label for="health-{{actor._id}}-col1-9"></label>
-              {{/multiboxes}}
-              <span>{{data.health.column.one.max}}</span>
-            </div>
-            <div class="health health1 flexrow">
-              <span>2</span>
-              <label for="health-{{actor._id}}-col2-0" class="zero-label"></label>
-              {{#multiboxes data.health.column.two.value}}
-              <input type="radio" id="health-{{actor._id}}-col2-0" name="data.health.column.two.value" value="0" checked="checked">
-              <input type="radio" id="health-{{actor._id}}-col2-1" name="data.health.column.two.value" value="1">
-              <label for="health-{{actor._id}}-col2-1"></label>
-              <input type="radio" id="health-{{actor._id}}-col2-2" name="data.health.column.two.value" value="2">
-              <label for="health-{{actor._id}}-col2-2"></label>
-              <input type="radio" id="health-{{actor._id}}-col2-3" name="data.health.column.two.value" value="3">
-              <label for="health-{{actor._id}}-col2-3"></label>
-              <input type="radio" id="health-{{actor._id}}-col2-4" name="data.health.column.two.value" value="4">
-              <label for="health-{{actor._id}}-col2-4"></label>
-              <input type="radio" id="health-{{actor._id}}-col2-5" name="data.health.column.two.value" value="5">
-              <label for="health-{{actor._id}}-col2-5"></label>
-              <input type="radio" id="health-{{actor._id}}-col2-6" name="data.health.column.two.value" value="6">
-              <label for="health-{{actor._id}}-col2-6"></label>
-              <input type="radio" id="health-{{actor._id}}-col2-7" name="data.health.column.two.value" value="7">
-              <label for="health-{{actor._id}}-col2-7"></label>
-              <input type="radio" id="health-{{actor._id}}-col2-8" name="data.health.column.two.value" value="8">
-              <label for="health-{{actor._id}}-col2-8"></label>
-              <input type="radio" id="health-{{actor._id}}-col2-9" name="data.health.column.two.value" value="9">
-              <label for="health-{{actor._id}}-col2-9"></label>
-              {{/multiboxes}}
-              <span>{{data.health.column.two.max}}</span>
-            </div>
-            <div class="health health2 flexrow">
-              <span>3</span>
-              <label for="health-{{actor._id}}-col3-0" class="zero-label"></label>
-              {{#multiboxes data.health.column.three.value}}
-              <input type="radio" id="health-{{actor._id}}-col3-0" name="data.health.column.three.value" value="0" checked="checked">
-              <input type="radio" id="health-{{actor._id}}-col3-1" name="data.health.column.three.value" value="1">
-              <label for="health-{{actor._id}}-col3-1"></label>
-              <input type="radio" id="health-{{actor._id}}-col3-2" name="data.health.column.three.value" value="2">
-              <label for="health-{{actor._id}}-col3-2"></label>
-              <input type="radio" id="health-{{actor._id}}-col3-3" name="data.health.column.three.value" value="3">
-              <label for="health-{{actor._id}}-col3-3"></label>
-              <input type="radio" id="health-{{actor._id}}-col3-4" name="data.health.column.three.value" value="4">
-              <label for="health-{{actor._id}}-col3-4"></label>
-              <input type="radio" id="health-{{actor._id}}-col3-5" name="data.health.column.three.value" value="5">
-              <label for="health-{{actor._id}}-col3-5"></label>
-              <input type="radio" id="health-{{actor._id}}-col3-6" name="data.health.column.three.value" value="6">
-              <label for="health-{{actor._id}}-col3-6"></label>
-              <input type="radio" id="health-{{actor._id}}-col3-7" name="data.health.column.three.value" value="7">
-              <label for="health-{{actor._id}}-col3-7"></label>
-              <input type="radio" id="health-{{actor._id}}-col3-8" name="data.health.column.three.value" value="8">
-              <label for="health-{{actor._id}}-col3-8"></label>
-              <input type="radio" id="health-{{actor._id}}-col3-9" name="data.health.column.three.value" value="9">
-              <label for="health-{{actor._id}}-col3-9"></label>
-              {{/multiboxes}}
-              <span>{{data.health.column.three.max}}</span>
-            </div>
-            <div class="health health2 flexrow">
-              <span>4</span>
-              <label for="health-{{actor._id}}-col4-0" class="zero-label"></label>
-              {{#multiboxes data.health.column.four.value}}
-              <input type="radio" id="health-{{actor._id}}-col4-0" name="data.health.column.four.value" value="0" checked="checked">
-              <input type="radio" id="health-{{actor._id}}-col4-1" name="data.health.column.four.value" value="1">
-              <label for="health-{{actor._id}}-col4-1"></label>
-              <input type="radio" id="health-{{actor._id}}-col4-2" name="data.health.column.four.value" value="2">
-              <label for="health-{{actor._id}}-col4-2"></label>
-              <input type="radio" id="health-{{actor._id}}-col4-3" name="data.health.column.four.value" value="3">
-              <label for="health-{{actor._id}}-col4-3"></label>
-              <input type="radio" id="health-{{actor._id}}-col4-4" name="data.health.column.four.value" value="4">
-              <label for="health-{{actor._id}}-col4-4"></label>
-              <input type="radio" id="health-{{actor._id}}-col4-5" name="data.health.column.four.value" value="5">
-              <label for="health-{{actor._id}}-col4-5"></label>
-              <input type="radio" id="health-{{actor._id}}-col4-6" name="data.health.column.four.value" value="6">
-              <label for="health-{{actor._id}}-col4-6"></label>
-              <input type="radio" id="health-{{actor._id}}-col4-7" name="data.health.column.four.value" value="7">
-              <label for="health-{{actor._id}}-col4-7"></label>
-              <input type="radio" id="health-{{actor._id}}-col4-8" name="data.health.column.four.value" value="8">
-              <label for="health-{{actor._id}}-col4-8"></label>
-              <input type="radio" id="health-{{actor._id}}-col4-9" name="data.health.column.four.value" value="9">
-              <label for="health-{{actor._id}}-col4-9"></label>
-              {{/multiboxes}}
-              <span>{{data.health.column.four.max}}</span>
-            </div>
-            <div class="health health3 flexrow">
-              <span>5</span>
-              <label for="health-{{actor._id}}-col5-0" class="zero-label"></label>
-              {{#multiboxes data.health.column.five.value}}
-              <input type="radio" id="health-{{actor._id}}-col5-0" name="data.health.column.five.value" value="0" checked="checked">
-              <input type="radio" id="health-{{actor._id}}-col5-1" name="data.health.column.five.value" value="1">
-              <label for="health-{{actor._id}}-col5-1"></label>
-              <input type="radio" id="health-{{actor._id}}-col5-2" name="data.health.column.five.value" value="2">
-              <label for="health-{{actor._id}}-col5-2"></label>
-              <input type="radio" id="health-{{actor._id}}-col5-3" name="data.health.column.five.value" value="3">
-              <label for="health-{{actor._id}}-col5-3"></label>
-              <input type="radio" id="health-{{actor._id}}-col5-4" name="data.health.column.five.value" value="4">
-              <label for="health-{{actor._id}}-col5-4"></label>
-              <input type="radio" id="health-{{actor._id}}-col5-5" name="data.health.column.five.value" value="5">
-              <label for="health-{{actor._id}}-col5-5"></label>
-              <input type="radio" id="health-{{actor._id}}-col5-6" name="data.health.column.five.value" value="6">
-              <label for="health-{{actor._id}}-col5-6"></label>
-              <input type="radio" id="health-{{actor._id}}-col5-7" name="data.health.column.five.value" value="7">
-              <label for="health-{{actor._id}}-col5-7"></label>
-              <input type="radio" id="health-{{actor._id}}-col5-8" name="data.health.column.five.value" value="8">
-              <label for="health-{{actor._id}}-col5-8"></label>
-              <input type="radio" id="health-{{actor._id}}-col5-9" name="data.health.column.five.value" value="9">
-              <label for="health-{{actor._id}}-col5-9"></label>
-              {{/multiboxes}}
-              <span>{{data.health.column.five.max}}</span>
-            </div>
-            <div class="health health3 flexrow">
-              <span>6</span>
-              {{#multiboxes data.health.column.six.value}}
-              <label for="health-{{actor._id}}-col6-0" class="zero-label"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-0" name="data.health.column.six.value" value="0" checked="checked">
-              <input type="radio" id="health-{{actor._id}}-col6-1" name="data.health.column.six.value" value="1">
-              <label for="health-{{actor._id}}-col6-1"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-2" name="data.health.column.six.value" value="2">
-              <label for="health-{{actor._id}}-col6-2"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-3" name="data.health.column.six.value" value="3">
-              <label for="health-{{actor._id}}-col6-3"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-4" name="data.health.column.six.value" value="4">
-              <label for="health-{{actor._id}}-col6-4"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-5" name="data.health.column.six.value" value="5">
-              <label for="health-{{actor._id}}-col6-5"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-6" name="data.health.column.six.value" value="6">
-              <label for="health-{{actor._id}}-col6-6"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-7" name="data.health.column.six.value" value="7">
-              <label for="health-{{actor._id}}-col6-7"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-8" name="data.health.column.six.value" value="8">
-              <label for="health-{{actor._id}}-col6-8"></label>
-              <input type="radio" id="health-{{actor._id}}-col6-9" name="data.health.column.six.value" value="9">
-              <label for="health-{{actor._id}}-col6-9"></label>
-              {{/multiboxes}}
-              <span>{{data.health.column.six.max}}</span>
-            </div>
             <span>Power Field / Armor</span>
-            <div class="health flexrow">
-              {{#multiboxes data.health.bonus.value}}
-              <label for="health-{{actor._id}}-bonus-0" class="zero-label"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-0" name="data.health.bonus.value" value="0" checked="checked">
-              <input type="radio" id="health-{{actor._id}}-bonus-1" name="data.health.bonus.value" value="1">
-              <label for="health-{{actor._id}}-bonus-1"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-2" name="data.health.bonus.value" value="2">
-              <label for="health-{{actor._id}}-bonus-2"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-3" name="data.health.bonus.value" value="3">
-              <label for="health-{{actor._id}}-bonus-3"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-4" name="data.health.bonus.value" value="4">
-              <label for="health-{{actor._id}}-bonus-4"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-5" name="data.health.bonus.value" value="5">
-              <label for="health-{{actor._id}}-bonus-5"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-6" name="data.health.bonus.value" value="6">
-              <label for="health-{{actor._id}}-bonus-6"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-7" name="data.health.bonus.value" value="7">
-              <label for="health-{{actor._id}}-bonus-7"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-8" name="data.health.bonus.value" value="8">
-              <label for="health-{{actor._id}}-bonus-8"></label>
-              <input type="radio" id="health-{{actor._id}}-bonus-9" name="data.health.bonus.value" value="9">
-              <label for="health-{{actor._id}}-bonus-9"></label>
-              {{/multiboxes}}
-              <span>{{data.health.bonus.max}}</span>
-            </div> -->
+            <table>
+              <tr>
+                <td id="bonus-box">
+                  <input type="checkbox" name="data.health.current.bonus.one" value="data.health.current.bonus.one" {{checked data.health.current.bonus.one}}>
+                </td>
+                <td id="bonus-box">
+                  <input type="checkbox" name="data.health.current.bonus.two" value="data.health.current.bonus.two" {{checked data.health.current.bonus.two}}>
+                </td>
+                <td id="bonus-box">
+                  <input type="checkbox" name="data.health.current.bonus.three" value="data.health.current.bonus.three" {{checked data.health.current.bonus.three}}>
+                </td>
+                <td id="bonus-box">
+                  <input type="checkbox" name="data.health.current.bonus.four" value="data.health.current.bonus.four" {{checked data.health.current.bonus.four}}>
+                </td>
+                <td id="bonus-box">
+                  <input type="checkbox" name="data.health.current.bonus.five" value="data.health.current.bonus.five" {{checked data.health.current.bonus.five}}>
+                </td>
+                <td id="bonus-box">
+                  <input type="checkbox" name="data.health.current.bonus.six" value="data.health.current.bonus.six" {{checked data.health.current.bonus.six}}>
+                </td>
+              </tr>
+            </table>  
           </div>
             <ul class="stats flexcol" style="height: 50%">
               {{#each data.stats.primary as |primary key|}}
