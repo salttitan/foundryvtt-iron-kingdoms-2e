@@ -367,3 +367,34 @@
   filter: brightness(0.8);
   opacity: 0.9;
 }
+
+#phy-box {
+  background-color: #005b7f;
+  color: white;
+  text-align: center;
+}
+
+#agl-box {
+  background-color: #881b1e;
+  color: white;
+  text-align: center;
+}
+
+#int-box {
+  background-color: #134d11;
+  color: white;
+  text-align: center;
+}
+
+#bonus-box {
+  background-color: lightblue;
+  text-align: center;
+}
+
+#col-num {
+  text-align: center;
+}
+
+#quick-stats {
+  text-align: center;
+}
